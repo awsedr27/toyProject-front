@@ -6,24 +6,13 @@ import api from '../../lib/api';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  //const [isLoading, setIsLoading] = useState(false);
-  //const [errorMessage, setErrorMessage] = useState('');
-  const router = useRouter();
-  // 로그인 요청을 상위 컴포넌트에서 처리
-  const handleLoginBtnClick = async (email, password) => {
+  const test = async (email, password) => {
     //setIsLoading(true);
    // setErrorMessage('');
 
     try {
       // 로그인 요청
-      const response = await api.post('/users/login', {
-        userId: email,  
-        password: password,
-      });
-      const token = response.headers.get('Authorization');
-      if (token) {
-        localStorage.setItem('token', token.replace('Bearer ', ''));
-      }
+      const response = await api.post('/users/refresh');
       alert(response.data.message);
       router.push('/main');  
     } catch (error) {
@@ -33,10 +22,9 @@ export default function Home() {
      // setIsLoading(false);
     }
   };
-
   return (
-    <LoginForm
-    onClick={handleLoginBtnClick}
-    ></LoginForm>
+    <div>메인화면입니다.
+      <button onClick={test}>test</button>
+    </div>
   );
 }
