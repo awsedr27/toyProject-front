@@ -12,10 +12,10 @@ export default function LoginForm() {
         <label htmlFor="password">비밀번호</label>
         <input type="password" id="password" name="password" required />
 
-        <BtnLogin></BtnLogin>
+        <BtnLogin isLoggedIn={false}></BtnLogin>
       </form>
       <p>
-        아직 계정이 없으신가요? <BtnSingUp></BtnSingUp>
+        아직 계정이 없으신가요? <BtnSingUp isLoggedIn={false}></BtnSingUp>
       </p>
     </div>
     );

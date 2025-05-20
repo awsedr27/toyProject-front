@@ -8,20 +8,14 @@ function handleLogin(token) {
     
 }
 
-export default function Header({ isLoggedIn }) {
-
+export default function Header({ _isLoggedIn }) {
     return (
     <>
-      <BtnLogin/>
-      <BtnSingUp/>
-      {/* {isLoggedIn ? (
-        <BtnLogout/>
-      ) : (
-        <>
-          <BtnLogin/>
-          <BtnSingUp/>
-        </>
-      )} */}
+    <div class='headerDiv'>
+      <BtnLogin isLoggedIn={_isLoggedIn}/>
+      <BtnSingUp isLoggedIn={_isLoggedIn}/>
+      <BtnLogout isLoggedIn={_isLoggedIn}/>
+    </div>
     </>
   );
 }

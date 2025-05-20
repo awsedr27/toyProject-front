@@ -1,4 +1,11 @@
 /* styles.css */
+.headerDiv {
+  display: flex;
+  align-items: right;
+}
+
+
+#----------------------
 * {
   margin: 0;
   padding: 0;
