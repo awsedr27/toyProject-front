@@ -11,7 +11,7 @@ function handleLogin(token) {
 export default function Header({ _isLoggedIn }) {
     return (
     <>
-    <div class='headerDiv'>
+    <div className='headerDiv'>
       <BtnLogin isLoggedIn={_isLoggedIn}/>
       <BtnSingUp isLoggedIn={_isLoggedIn}/>
       <BtnLogout isLoggedIn={_isLoggedIn}/>

@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
     <html>
       <body>
         <ThemeProvider theme={theme}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', height:'100%', margin: '0 auto' ,backgroundColor:'Green'}}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', height:'100%', margin: '0 auto' ,backgroundColor:'Grey'}}>
             <div style={{ height:'15%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Header/>
             </div>
