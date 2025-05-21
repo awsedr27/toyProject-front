@@ -1,40 +1,20 @@
-'use client';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Header from './components/layouts/Header';
-// import Footer from './components/layouts/Footer';
-import './globals.css';
-import { Height } from '@mui/icons-material';
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Header from './components/layouts/Header.js'
+import Navigator from './components/layouts/Navigator.js'
+import SignUp from './signup/page'
+import Page from "./page.js";
 
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#1976d2',
-    },
-    secondary: {
-      main: '#dc004e',
-    },
-  },
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
   return (
-    <html>
-      <body>
-        <ThemeProvider theme={theme}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', height:'100%', margin: '0 auto' ,backgroundColor:'Green'}}>
-            <div style={{ height:'15%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Header/>
-            </div>
-            <br/>
-            <div style={{height:'85%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {children}
-            </div>
-          </div>
-          {/* <Footer/> */}
-        </ThemeProvider>
+      <html lang="en">
+      <body className={inter.className}>
+      <Header/>
+      <Navigator/>
+      <Page/>
       </body>
-    </html>
+      </html>
   );
 }
