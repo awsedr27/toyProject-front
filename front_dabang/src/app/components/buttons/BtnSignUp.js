@@ -1,5 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import { Button } from '@mui/material';
 
 export default function BtnSingUp({ isLoggedIn }) {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function BtnSingUp({ isLoggedIn }) {
         null
       ) : (
         <>
-          <button onClick={handleSignupClick}>회원가입</button>
+          <Button variant="contained" onClick={handleSignupClick}>회원가입</Button>
         </>
       )}
     </>

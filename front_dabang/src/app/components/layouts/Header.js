@@ -5,8 +5,7 @@ function handleLogin(token) {
     
 }
 
-export default function Header({ isLoggedIn }) {
-
+export default function Header({ _isLoggedIn }) {
     return (
         <div className="join-container header">
             <ul>

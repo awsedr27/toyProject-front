@@ -1,8 +1,7 @@
 import axios from 'axios';
-
 // Axios 인스턴스 생성
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080', // 스프링부트 주소
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL, // || 'http://localhost:8080', // 스프링부트 주소
   withCredentials: true, // 필요 시 쿠키 포함
   headers: {
     'Content-Type': 'application/json',

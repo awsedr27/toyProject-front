@@ -1,101 +1,73 @@
-'use client'
-import React from "react";
-import "./signup.css";
+'use client';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
-export default function SignUp() {
-    const router = useRouter();
-    const formRef_su = useRef(null);
 
+export default function signUpPage() {
+  const router = useRouter();
+  const formRef = useRef(null);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
+    const data = Object.fromEntries(formData.entries());
+    const options =  {
+      method: 'POST',
+      // mode: 'no-cors',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(data),
+    };
+    if (data.password !== data.confirm) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
 
-        const fn_signup = async () => {
-            const formData = new FormData(formRef_su.current);
-            const data = Object.fromEntries(formData.entries());
-            const options =  {
-                method: 'POST',
-                //mode: 'cors',
-                //mode: 'no-cors',
-                headers: { 'content-type': 'application/json', 'Authorization' : 'NfWbUeYf3KxYFvD0c9N0+jEwTUzpYx3NbyX+PRT7c1pTCNy+xUJtbv9n=='},
-                body: JSON.stringify(data),
-            };
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}users/join`, options);
 
-            try {
-                await fetch(`http://localhost:8080/users/signup`, options).then((rt) => {
-                    if (!rt.ok) {
-                        const error =  rt.text();
-                        alert(`회원가입 실패: ${error}`);
-                        return;
-                    }  else{
-                        router.push('/login');
-                    }
-                });
-            } catch (err) {
-                alert(err);
-                console.log(err);
-            }
-        }
+      if (!response.ok) {
+        const error = await response.text();
+        alert(`회원가입 실패: ${error}`);
+        return;
+      }
 
+      const result = await response.json();
+      alert(result['MSG']);
+      if (result.CODE != 0) {
+        return;
+      }
+      router.push('/login');
+    } catch (err) {
+      console.error('오류:', err);
+      alert('네트워크 오류가 발생했습니다.');
+    }
+  };
 
-        return (
-            <div className="main_contain signup">
-                <form ref={formRef_su}>
-                    <div>
-                        <h1 id='register_title'> 회원가입</h1>
-                    </div>
-                    <div className='register'>
-                        <div>
-                            {/* 아이디 */}
-                            <div>
-                                <h5> 아이디 </h5>
-                                <input type='text' className="input-field" maxLength='20' name='userId' placeholder="7자 이상의 문자" autoFocus/>
-                                <button type="button" id="dupIdCheck">중복확인</button>
-                            </div>
+  return (
+    <div className="join-container">
+      <h1>회원가입</h1>
+      <form ref={formRef} className="join-form" onSubmit={handleSubmit}>
+        <label htmlFor="userId">아이디</label>
+        <input type="text" id="userId" name="userId" required />
 
-                            {/* 비밀번호 */}
-                            <div>
-                                <h5> 비밀번호 </h5>
-                                <input type='password' className="input-field" maxLength='15' name='password' placeholder="비밀번호"/>
-                            </div>
+        <label htmlFor="password">비밀번호</label>
+        <input type="password" id="password" name="password" required />
 
-                            {/* 비밀번호 */}
-                            <div>
-                                <h5> 비밀번호 확인 </h5>
-                                <input type='password' className="input-field" maxLength='15' name='register_pswCheck' placeholder="비밀번호 확인"/>
-                            </div>
+        <label htmlFor="confirm">비밀번호 확인</label>
+        <input type="password" id="confirm" name="confirm" required />
 
-                            {/* 이름 */}
-                            <div>
-                                <h5> 이름 </h5>
-                                <input type='text' className="input-field" maxLength='10' name='userName' placeholder="이름"/>
-                            </div>
+        <label htmlFor="email">이메일</label>
+        <input type="email" id="email" name="email" required />
 
-                            {/* 생년월일 */}
-                            {/*<div>
-                                <h5> 생년월일 </h5>
-                                <input type='text' className="input-field2" maxLength='6' name='register_birthday'/> -&nbsp;
-                                <input type='text' className="input-field3" maxLength='1' name='register_sex'/> ******
-                            </div>*/}
+        <label htmlFor="name">이름</label>
+        <input type="text" id="name" name="name" required />
 
-                            {/* 이메일 */}
-    {/*                        <div>
-                                <h5> 이메일 </h5>
-                                <input type='text' className="input-field2" maxLength='15' name='register_email'/> @&nbsp;
-                                <select name='register_email_select'  onChange={changeEmailSelect}>
-                                    <option value='gmail.com'> gmail.com </option>
-                                    <option value='naver.com'> naver.com </option>
-                                    <option value='write'> 직접 입력 </option>
-                                </select>
-                            </div>*/}
+        <label htmlFor="phoneNumber">전화번호</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required />
 
-                            {/* 주소 추가해야됨 */}
-                        </div>
-                    </div>
+        <input type="hidden" name="used" value="true" />
 
-                    <div>
-                        <button type="submit" id="sbtn" onClick={fn_signup}>가입하기&nbsp;🎉</button>
-                    </div>
-                </form>
-            </div>
-        )
+        <button type="submit">회원가입</button>
+      </form>
+    </div>
+  );
 }
