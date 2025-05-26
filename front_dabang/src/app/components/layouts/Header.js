@@ -1,8 +1,5 @@
 "use client"
-
-import BtnLogin from "../buttons/BtnLogin";
-import BtnLogout from "../buttons/BtnLogout";
-import BtnSingUp from "../buttons/BtnSignUp";
+import "./header.css";
 
 function handleLogin(token) {
     
@@ -10,12 +7,15 @@ function handleLogin(token) {
 
 export default function Header({ _isLoggedIn }) {
     return (
-    <>
-    <div className='headerDiv'>
-      <BtnLogin isLoggedIn={_isLoggedIn}/>
-      <BtnSingUp isLoggedIn={_isLoggedIn}/>
-      <BtnLogout isLoggedIn={_isLoggedIn}/>
-    </div>
-    </>
+        <div className="join-container header">
+            <ul>
+                <li>Header1</li>
+                <li>Header2</li>
+                <li>Header3</li>
+                <li>Header4</li>
+                <li>Header5</li>
+                <li>Header6</li>
+            </ul>
+        </div>
   );
 }

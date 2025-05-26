@@ -15,8 +15,9 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  text-align: center;
   height: 100vh;
 }
 
@@ -61,6 +62,10 @@ p {
   margin-top: 16px;
 }
 
+li {
+  list-style-type: none;
+}
+
 a {
   color: #1976d2;
   text-decoration: none;
@@ -73,4 +78,36 @@ a:hover {
 ul li {
   list-style: none;
   padding-bottom: 15px; 
+}
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  display: block;
+  overflow: hidden;
+  background-color: rgba(127,255,212,0.3);
+}
+
+.signup{
+  position: absolute;
+  right: 0;
+  top: 10%;
+  width: 100%;
+  height: 90%;
+  display: inline-block;
+  /*background-color: antiquewhite;*/
+}
+
+.navigator{
+  position: fixed;
+  left: 2%;
+  top: 20%;
+  width: auto;
+  height: auto;
+  padding: 1% 2% 1% 2%;
+  display: inline-block;
+  background-color: rgba(233,150,122,0.5);
 }

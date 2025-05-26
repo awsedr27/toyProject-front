@@ -1,22 +1,11 @@
-'use client';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Header from './components/layouts/Header';
-// import Footer from './components/layouts/Footer';
-import './globals.css';
-import { Height } from '@mui/icons-material';
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Header from './components/layouts/Header.js'
+import Navigator from './components/layouts/Navigator.js'
+import SignUp from './signup/page'
+import Page from "./page.js";
 
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#1976d2',
-    },
-    secondary: {
-      main: '#dc004e',
-    },
-  },
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
   return (
@@ -35,6 +24,6 @@ export default function RootLayout({ children }) {
           {/* <Footer/> */}
         </ThemeProvider>
       </body>
-    </html>
+      </html>
   );
 }
