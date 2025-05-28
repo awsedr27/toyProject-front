@@ -1,6 +1,6 @@
 'use server'
 import { redirect } from 'next/navigation'; 
-import api from '../../../lib/api';
+import api from '@/lib/api';
 
 export default async function Login(formData) {
   const email = formData.get('email');

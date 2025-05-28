@@ -1,9 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from './components/layouts/Header.js'
-import Navigator from './components/layouts/Navigator.js'
-import SignUp from './signup/page'
-import Page from "./page.js";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +8,6 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body>
-        <ThemeProvider theme={theme}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', height:'100%', margin: '0 auto' ,backgroundColor:'Grey'}}>
             <div style={{ height:'15%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Header/>
@@ -22,7 +18,6 @@ export default function RootLayout({ children }) {
             </div>
           </div>
           {/* <Footer/> */}
-        </ThemeProvider>
       </body>
       </html>
   );

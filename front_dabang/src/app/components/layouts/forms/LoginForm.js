@@ -6,7 +6,7 @@ import { TextField, FormControl } from '@mui/material';
 import Login from '../../function/FncLogin';
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('');
+  const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 표시용
 
@@ -14,7 +14,7 @@ export default function LoginForm() {
     setIsLoading(true);
 
     const formData = new FormData();
-    formData.append('email', email); //name
+    formData.append('id', id); //name
     formData.append('password', password); 
     try {
       const result = await Login(formData);
@@ -31,7 +31,7 @@ export default function LoginForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'email') setEmail(value);
+    if (name === 'id') setId(value);
     else if (name === 'password') setPassword(value);
   };
 
@@ -43,12 +43,12 @@ export default function LoginForm() {
       <ul>
           <li>
             <TextField
-              id="email"
-              name="email"
-              label="이메일" 
+              id="id"
+              name="id"
+              label="아이디" 
               variant="outlined"
-              type="email"
-              value={email}
+              type="text"
+              value={id}
               onChange={handleChange}
               required
               autoFocus
