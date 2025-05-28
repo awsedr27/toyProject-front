@@ -15,6 +15,7 @@ export default function signUpPage() {
       // mode: 'no-cors',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(data),
+      Credential:'include'
     };
     if (data.password !== data.confirm) {
       alert('비밀번호가 일치하지 않습니다.');
@@ -22,7 +23,7 @@ export default function signUpPage() {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}users/join`, options);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users/signup`, options);
 
       if (!response.ok) {
         const error = await response.text();
