@@ -30,7 +30,6 @@ export default function MainWrapper(){
         return (
             <div style={{ padding: '50px', fontSize: '20px', textAlign: 'center' }}>
             <p>인증 상태 확인 중...</p>
-            {/* 간단한 로딩 스피너 추가 */}
             <div style={{ border: '4px solid #f3f3f3', borderTop: '4px solid #3498db', borderRadius: '50%', width: '30px', height: '30px', animation: 'spin 1s linear infinite', margin: '10px auto' }}></div>
             <style jsx>{`
               @keyframes spin {
@@ -44,7 +43,7 @@ export default function MainWrapper(){
     
     return (
         <>
-            {authenticated ? (
+            {false ? (
             <LoggedInHome user={user} />
             ) : (
             <LoggedOutHome />

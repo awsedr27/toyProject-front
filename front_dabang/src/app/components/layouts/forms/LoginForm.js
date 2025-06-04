@@ -40,10 +40,10 @@ export default function LoginForm() {
     <h1>로그인</h1>
     <div className="login-form">
       <FormControl>
-      <ul>
+      <ul  style={{ paddingRight: '40px' }}>
           <li>
             <TextField
-              id="id"
+              id="user_id"
               name="id"
               label="아이디" 
               variant="outlined"
@@ -70,9 +70,12 @@ export default function LoginForm() {
           <BtnLogin isLoggedIn={false} onClick={handleLoginSubmit}></BtnLogin>
         </li>
       <li>
-        <span>
-          아직 계정이 없으신가요?         <BtnSingUp></BtnSingUp>
-        </span>
+        <p>
+          아직 계정이 없으신가요?             
+        </p>
+        <p>
+          <BtnSingUp></BtnSingUp>
+        </p>
       </li>
       </ul>
       </FormControl>

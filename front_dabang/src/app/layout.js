@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', height:'100%', margin: '0 auto' ,backgroundColor:'Grey'}}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', margin: '0 auto' ,backgroundColor:'lightgrey'}}>
             <div style={{ height:'15%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Header/>
             </div>

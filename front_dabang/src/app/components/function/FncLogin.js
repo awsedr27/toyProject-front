@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import api from '@/lib/api';
 
 export default async function Login(formData) {
-  const email = formData.get('email');
+  const email = formData.get('id');
   const password = formData.get('password');  
   try {
       console.log('go');
@@ -20,9 +20,7 @@ export default async function Login(formData) {
         redirect('/main');  
       } catch (error) {
         // 오류 처리
-        //setErrorMessage('로그인 실패: 이메일 또는 비밀번호를 확인하세요.');
       } finally {
-      // setIsLoading(false);
       }
     return (
         'login'
