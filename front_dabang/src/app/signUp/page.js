@@ -15,6 +15,7 @@ export default function signUpPage() {
       // mode: 'no-cors',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(data),
+      Credential:'include'
     };
     if (data.password !== data.confirm) {
       alert('비밀번호가 일치하지 않습니다.');

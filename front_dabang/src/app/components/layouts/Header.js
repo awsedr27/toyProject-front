@@ -1,21 +1,18 @@
-"use client"
-import "./header.css";
+import Link from 'next/link';
+import styles from './Header.module.css';
 
-function handleLogin(token) {
-    
-}
-
-export default function Header({ _isLoggedIn }) {
-    return (
-        <div className="join-container header">
-            <ul>
-                <li>Header1</li>
-                <li>Header2</li>
-                <li>Header3</li>
-                <li>Header4</li>
-                <li>Header5</li>
-                <li>Header6</li>
-            </ul>
-        </div>
+export default function Header() {
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.logo}>MySite</div>
+        <nav className={styles.nav}>
+          <Link href="/main" className={styles.link}>Main</Link>
+          <Link href="/about" className={styles.link}>About</Link>
+          <Link href="/services" className={styles.link}>Services</Link>
+          <Link href="/contact" className={styles.link}>Contact</Link>
+        </nav>
+      </div>
+    </header>
   );
 }
