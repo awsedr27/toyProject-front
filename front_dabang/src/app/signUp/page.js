@@ -22,7 +22,7 @@ export default function signUpPage() {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}users/join`, options);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users/signup`, options);
 
       if (!response.ok) {
         const error = await response.text();
@@ -31,7 +31,7 @@ export default function signUpPage() {
       }
 
       const result = await response.json();
-      alert(result['MSG']);
+      alert(result['message']);
       if (result.CODE != 0) {
         return;
       }
