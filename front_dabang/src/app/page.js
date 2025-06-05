@@ -1,9 +1,9 @@
-import './globals.css'
-
-export default function Home() {
-  return (
-   <>
-   <h3>Home</h3>
-   </>
-  );
+import React from "react";
+import api from "@/lib/api"
+import MainWrapper from "./components/layouts/pages/MainWrapper";
+export default function Page() {
+    return (
+      <MainWrapper></MainWrapper>
+    );
 }
+

@@ -6,10 +6,8 @@ export const metadata = {
 
 export default function SignUpLayout({ children }) {
   return(
-    <html>
-      <body>
-        {children}
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   ) ;
 }

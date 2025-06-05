@@ -3,7 +3,7 @@ import {useRouter} from 'next/navigation';
 import { Button } from '@mui/material';
 
 
-export default function BtnLogin({ isLoggedIn = false, onClick, isLoading=false}) {
+export default function BtnLogin({ isLoggedIn = false, onClick}) {
   const router = useRouter();
 
   const handleLoginClick = async () => {
@@ -21,7 +21,7 @@ export default function BtnLogin({ isLoggedIn = false, onClick, isLoading=false}
         null
       ) : (
         <>
-          <Button variant ="contained" onClick={handleLoginClick}>로그인</Button>
+          <Button variant ="contained" onClick={handleLoginClick} style={{width:'223px'}}>로그인</Button>
         </>
       )} 
     </>
