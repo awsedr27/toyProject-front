@@ -4,15 +4,12 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@mui/material';
 import { logoutClient } from '../function/FncAuthClient';
 
-export default function BtnLogout({ isLoggedIn }) {
+export default function BtnLogout({ isLoggedIn, onSetLogin }) {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
 
   const handleLogoutClick = () => {
-    setLoading(true);
     logoutClient();
-    router.refresh(); 
-    setLoading(false);
+    onSetLogin(false);
   };
 
   return (

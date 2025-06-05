@@ -5,27 +5,22 @@ import LoggedInHome from "./LoggedInHome";
 import LoggedOutHome from "./LoggedOutHome";
 
 export default function MainWrapper(){
-    const [authenticated, setAuthenticated] = useState(false);
-    const [user, setUser] = useState(null);
+    const [authenticated, setAuthenticated] = useState(true);
     const [loadingAuth, setLoadingAuth] = useState(true);
     
+
     useEffect(() => {
-    const checkAuth = () => {
-      const isAuth = isAuthenticatedClient();
-      setAuthenticated(isAuth);
-      if (isAuth) {
-        setUser(getUserSessionClient());
-      } else {
-        setUser(null);
-      }
-      setLoadingAuth(false);
-    };
+      const checkAuth = () => {
+        const isAuth = isAuthenticatedClient();
+        setAuthenticated(isAuth);
+        setLoadingAuth(false);
+      };
 
-    checkAuth(); 
+      checkAuth(); 
 
-    return () => {
-        };
-    }, []);
+      return () => {
+          };
+    }, [authenticated]);
     if (loadingAuth) {
         return (
             <div style={{ padding: '50px', fontSize: '20px', textAlign: 'center' }}>
@@ -43,10 +38,10 @@ export default function MainWrapper(){
     
     return (
         <>
-            {false ? (
-            <LoggedInHome user={user} />
+            {authenticated ? (
+            <LoggedInHome handleLogin={setAuthenticated} />
             ) : (
-            <LoggedOutHome />
+            <LoggedOutHome handleLogin={setAuthenticated} />
             )}
         </>
     );

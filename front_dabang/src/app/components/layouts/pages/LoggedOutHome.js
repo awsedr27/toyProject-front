@@ -2,14 +2,15 @@
 'use client';
 
 import LoginForm from '@/app/components/layouts/forms/LoginForm'; // 앞서 만든 LoginForm 컴포넌트 임포트
-import { useRouter } from 'next/navigation';
 import { Box, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import logo_SB from '@/app/components/images/logo_SB.png'
-import { Height } from '@mui/icons-material';
+export default function LoggedOutHome({handleLogin}) {
 
-export default function LoggedOutHome() {
-  const router = useRouter();
+  const handleSetLoginStatus = (status) =>{
+    handleLogin(status);
+  }
+
 
   return (
     <>
@@ -24,7 +25,7 @@ export default function LoggedOutHome() {
             <Typography  variant="p">서비스를 이용하려면 로그인해주세요.</Typography>
           </Box>
           <Box style={{ padding: '20px', border: '1px solid #4C90FEFF', margin: '20px', backgroundColor: 'white', borderRadius: '20px', display:'flex'}}>
-            <LoginForm /> 
+            <LoginForm onSetLogin={handleSetLoginStatus}/> 
           </Box>
         </Stack>
       </Stack>
