@@ -1,0 +1,14 @@
+{
+  "en": {
+    "translation": {
+      "LOGOUT.WELCOME": "Welcome"
+       ,"LOGOUT.PLEASE_LOGIN":"Sign in to access all services."
+    }
+  },
+  "kr": {
+    "translation": {
+      "LOGOUT.WELCOME": "환영합니다"
+      ,"LOGOUT.PLEASE_LOGIN":"서비스를 이용하려면 로그인해주세요."
+    }
+  }
+}
