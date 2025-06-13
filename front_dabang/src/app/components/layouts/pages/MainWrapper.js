@@ -1,8 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { isAuthenticatedClient, getUserTokenClient } from '@/app/components/function/FncAuthClient';
-import { I18nextProvider } from 'react-i18next';
-import i18n from '@/lib/i18n'; 
 import LoggedInHome from "./LoggedInHome";
 import LoggedOutHome from "./LoggedOutHome";
 
@@ -22,7 +20,7 @@ export default function MainWrapper(){
 
       return () => {
           };
-    }, [authenticated]);
+    }, []);
     if (loadingAuth) {
         return (
             <div style={{ padding: '50px', fontSize: '20px', textAlign: 'center' }}>
@@ -40,13 +38,11 @@ export default function MainWrapper(){
     
     return (
         <>
-          <I18nextProvider i18n={i18n}>
-              {authenticated ? (
-                <LoggedInHome handleLogin={setAuthenticated} />
-              ) : (
-                <LoggedOutHome handleLogin={setAuthenticated} />
-              )}
-          </I18nextProvider>
+          {true ? (
+            <LoggedInHome handleLogin={setAuthenticated} />
+          ) : (
+            <LoggedOutHome handleLogin={setAuthenticated} />
+          )}
         </>
     );
 

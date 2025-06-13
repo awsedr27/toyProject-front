@@ -3,12 +3,18 @@
     "translation": {
       "LOGOUT.WELCOME": "Welcome"
        ,"LOGOUT.PLEASE_LOGIN":"Sign in to access all services."
+       ,"BTN.LOG_IN" :"Sign In"
+       ,"BTN.LOG_OUT" :"Log Out"
+       ,"BTN.SIGN_UP" :"Sign Up"
     }
   },
   "kr": {
     "translation": {
       "LOGOUT.WELCOME": "환영합니다"
       ,"LOGOUT.PLEASE_LOGIN":"서비스를 이용하려면 로그인해주세요."
+      ,"BTN.LOG_IN" :"로그인"
+      ,"BTN.LOG_OUT" :"로그아웃"
+      ,"BTN.SIGN_UP" :"회원가입"
     }
   }
 }
