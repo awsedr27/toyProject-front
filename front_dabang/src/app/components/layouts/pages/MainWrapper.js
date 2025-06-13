@@ -20,7 +20,7 @@ export default function MainWrapper(){
 
       return () => {
           };
-    }, [authenticated]);
+    }, []);
     if (loadingAuth) {
         return (
             <div style={{ padding: '50px', fontSize: '20px', textAlign: 'center' }}>
@@ -38,11 +38,11 @@ export default function MainWrapper(){
     
     return (
         <>
-            {authenticated ? (
+          {true ? (
             <LoggedInHome handleLogin={setAuthenticated} />
-            ) : (
+          ) : (
             <LoggedOutHome handleLogin={setAuthenticated} />
-            )}
+          )}
         </>
     );
 
