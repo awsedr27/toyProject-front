@@ -38,7 +38,7 @@ export default function MainWrapper(){
     
     return (
         <>
-          {true ? (
+          {authenticated ? (
             <LoggedInHome handleLogin={setAuthenticated} />
           ) : (
             <LoggedOutHome handleLogin={setAuthenticated} />
