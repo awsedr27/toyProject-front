@@ -3,7 +3,7 @@ export function
 isAuthenticatedClient () {
    if (typeof window != 'undefined') {
     const token = localStorage.getItem('token');
-    return !!token;
+    return token != 'undefined' && !!token;
    } 
    return false;
 }

@@ -1,6 +1,7 @@
 'use client'
 import {useRouter} from 'next/navigation';
 import { Button } from '@mui/material';
+import Trans from '@/app/components/common/Trans';
 
 
 export default function BtnLogin({ isLoggedIn = false, onClick}) {
@@ -21,7 +22,7 @@ export default function BtnLogin({ isLoggedIn = false, onClick}) {
         null
       ) : (
         <>
-          <Button variant ="contained" onClick={handleLoginClick} style={{width:'223px'}}>로그인</Button>
+          <Button variant ="contained" onClick={handleLoginClick} style={{width:'223px'}}><Trans tkey={"BTN.LOG_IN"}/></Button>
         </>
       )} 
     </>

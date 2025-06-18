@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
 import { Button, Modal, Box } from '@mui/material';
 import SignupForm from '@/app/components/layouts/forms/SignupForm';
 
@@ -14,6 +15,7 @@ export default function BtnSingUp({ isLoggedIn }) {
 
   return (
     <>
+
       <Button variant="contained" color="primary" onClick={signupOpen}>
         회원가입
       </Button>
