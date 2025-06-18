@@ -1,22 +1,26 @@
 'use client';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@mui/material';
+import { Button, Modal, Box } from '@mui/material';
+import SignupForm from '@/app/components/layouts/forms/SignupForm';
 
 export default function BtnSingUp({ isLoggedIn }) {
   const router = useRouter();
-
+  const [isClicked, setIsClicked] = useState(false);
   const handleSignupClick = () => {
-    router.push('/signUp');
   };
+  const signupOpen = () => {setIsClicked(true);}
+  const signupClose = () => {setIsClicked(false);}
 
   return (
     <>
-      {isLoggedIn ? (
-        null
-      ) : (
-        <>
-          <Button variant="contained" onClick={handleSignupClick}>회원가입</Button>
-        </>
+      <Button variant="contained" color="primary" onClick={signupOpen}>
+        회원가입
+      </Button>
+      {isClicked && (
+          <div style={{ marginTop: '20px' }}>
+            <SignupForm onClose={signupClose} />
+          </div>
       )}
     </>
   );

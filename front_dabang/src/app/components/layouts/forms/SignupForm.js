@@ -1,13 +1,11 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import {Button, FormControl, TextField} from "@mui/material";
-import Signup from "../components/function/FncSignup";
+import Signup from "@/app/components/function/FncSignup";
 import { useRouter } from 'next/navigation';
 
 export default function signUpPage() {
   const router = useRouter();
-  const formRef = useRef(null);
-  const [signUpValid, setValid] = useState(false);
   const [formData, setFormData] = useState([]);
   const [errorId, setError] = useState({
     password: '',
