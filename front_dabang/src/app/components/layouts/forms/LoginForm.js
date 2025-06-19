@@ -95,9 +95,7 @@ export default function LoginForm({onSetLogin}) {
         <p>
           아직 계정이 없으신가요?             
         </p>
-        <p>
-          <BtnSingUp></BtnSingUp>
-        </p>
+        <BtnSingUp></BtnSingUp>
       </li>
       </ul>
       </FormControl>
