@@ -22,6 +22,9 @@ export default function BtnSingUp({ isLoggedIn }) {
       {isClicked && (
           <div style={{ marginTop: '20px' }}>
             <SignupForm onClose={signupClose} />
+            <Button variant="contained" color="primary" onClick={signupClose}>
+              취소
+            </Button>
           </div>
       )}
     </>
