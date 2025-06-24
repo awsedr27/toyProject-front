@@ -6,7 +6,7 @@ import { TextField, FormControl } from '@mui/material';
 import Login from '../../function/FncLogin';
 import { useRouter } from 'next/navigation';
 
-export default function LoginForm({onSetLogin}) {
+export default function LoginForm({onSetLogin, activeForm}) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 표시용
@@ -56,7 +56,11 @@ export default function LoginForm({onSetLogin}) {
           };
     }
       }, [isLoading]);
-  
+
+  const signupOpen = () => {
+    activeForm("S");
+  }
+
   return (
       <div className="login-container">
     <h1>로그인</h1>
@@ -95,7 +99,7 @@ export default function LoginForm({onSetLogin}) {
         <p>
           아직 계정이 없으신가요?             
         </p>
-        <BtnSingUp></BtnSingUp>
+        <BtnSingUp activeForm={signupOpen}></BtnSingUp>
       </li>
       </ul>
       </FormControl>

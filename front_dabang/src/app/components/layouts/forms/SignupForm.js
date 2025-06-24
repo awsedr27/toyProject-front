@@ -4,7 +4,7 @@ import {Button, FormControl, TextField} from "@mui/material";
 import Signup from "@/app/components/function/FncSignup";
 import { useRouter } from 'next/navigation';
 
-export default function signUpPage() {
+export default function signUpPage({activeForm}) {
   const router = useRouter();
   const [formData, setFormData] = useState([]);
   const [errorId, setError] = useState({
@@ -125,7 +125,9 @@ export default function signUpPage() {
     }
   };
 
-
+  const closeSignup = () => {
+    activeForm("L");
+  }
   return (
       <div className="join-container">
         <h1>회원가입</h1>
@@ -215,6 +217,9 @@ export default function signUpPage() {
               </li>
               <li>
                 <Button  variant="contained" onClick={signUpSubmit}>Sign Up</Button>
+                <Button variant="contained" color="primary" onClick={closeSignup}>
+                  취소
+                </Button>
               </li>
             </ul>
           </FormControl>

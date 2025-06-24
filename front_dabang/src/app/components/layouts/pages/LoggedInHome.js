@@ -5,7 +5,6 @@ import RainbowHearts from '../../icons/RainbowHearts';
 import Header from '@/app/components/layouts/Header.js'
 
 export default function LoggedInHome({ handleLogin }) {
-
   return (
     <>
       <Header/>
