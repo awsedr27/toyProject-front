@@ -4,7 +4,7 @@ import {Button, FormControl, TextField} from "@mui/material";
 import Signup from "@/app/components/function/FncSignup";
 import { useRouter } from 'next/navigation';
 
-export default function signUpPage({activeForm}) {
+export default function SignUpPage({activeForm}) {
   const router = useRouter();
   const [formData, setFormData] = useState([]);
   const [errorId, setError] = useState({
