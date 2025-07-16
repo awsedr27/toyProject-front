@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <div className={styles.logo}>mySite</div>
+        <div className={styles.logo}>nunecine</div>
         <nav className={styles.nav}>
           <Link href="/main" className={styles.link}>Main</Link>
           <Link href="/about" className={styles.link}>About</Link>

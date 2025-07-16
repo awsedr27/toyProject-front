@@ -24,7 +24,7 @@
    scrollbarStyles,
    PLACEHOLDER_COLOR,
    PLACEHOLDER_ICON_COLOR
- } from '../../styles/MovieCardStyles';
+ } from '@/styles/MovieCardStyles';
 
  export default function Home() {
    const theme = useTheme();

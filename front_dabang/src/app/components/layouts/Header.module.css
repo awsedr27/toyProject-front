@@ -1,5 +1,5 @@
 .header {
-  background-image: linear-gradient(to right, #f7ff8a 20%, #b288fff8);
+  background-image: linear-gradient(to right, #f7ff8a 20%, #b288fff8 80%, #7F00FF);
   color: #b288fff8;
   padding: 15px 30px;
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.596);

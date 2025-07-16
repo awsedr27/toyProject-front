@@ -6,12 +6,13 @@ import SignupForm from '@/app/components/layouts/forms/SignupForm';
 import React, { useEffect, useState, useRef } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
-import logo_SB from '@/../public/images/logo_SB.png'
+import logo from '@/../public/images/logo.png'
 import Trans from '@/app/components/common/Trans';
 import BtnMultlLang from '@/app/components/buttons/BtnMultiLang';
+import { CustomBox } from '@/styles/CommonStyles';
 
 export default function LoggedOutHome({handleLogin}) {
-    const [activeForm, setActiveForm] = useState('L');
+  const [activeForm, setActiveForm] = useState('L');
   const handleSetLoginStatus = (status) =>{
     handleLogin(status);
   }
@@ -29,23 +30,23 @@ export default function LoggedOutHome({handleLogin}) {
             <BtnMultlLang locale={"en"} label={"English"}/> 
           </Box>
         <Stack  direction={{ xs: 'column', md: 'row' }}  alignItems={{ xs: 'center', md: 'flex-start' }}  style={{top:'30px'}} >
-          <Box style={{ padding: '10px', border: '1px solid #4C90FEFF', margin: '20px', backgroundColor: 'white', textAlign: 'center' , borderRadius: '90px',  flexShrink: 0}}>
-            <Image src={logo_SB} alt="logo" width={'150'} height={'150'} />
-          </Box>
+          <CustomBox sx={{ padding: '10px', textAlign: 'center' , borderRadius: '90px',  flexShrink: 0}}>
+            <Image src={logo} alt="logo" width={'150'} height={'150'} />
+          </CustomBox>
            <Stack spacing={2} sx={{ flexGrow: 1 }}>
-            <Box style={{ padding: '20px', border: '1px solid #4C90FEFF', margin: '20px', backgroundColor: 'white', textAlign: 'center' , borderRadius: '20px'}}>
+            <CustomBox>
               <Typography  variant="h4"><Trans tkey="LOGOUT.WELCOME" /></Typography>
               <br/>
               <Typography  variant="p"><Trans tkey={"LOGOUT.PLEASE_LOGIN"}/></Typography>
-            </Box>
+            </CustomBox>
             {activeForm === 'L' ?(
-                <Box style={{ padding: '20px', border: '1px solid #4C90FEFF', margin: '20px', backgroundColor: 'white', borderRadius: '20px', display:'flex'}}>
+                <CustomBox style={{ display:'flex'}}>
                     <LoginForm onSetLogin={handleSetLoginStatus} activeForm={handleActiveForm}/>
-                </Box>
+                </CustomBox>
             ) : activeForm === 'S' ? (
-                <Box style={{ padding: '20px', border: '1px solid #4C90FEFF', margin: '20px', backgroundColor: 'white', borderRadius: '20px', display:'flex'}}>
+                <CustomBox style={{ display:'flex'}}>
                     <SignupForm activeForm={handleActiveForm}/>
-                </Box>
+                </CustomBox>
             ) :
                 ''
             }

@@ -95,7 +95,7 @@ export default function LoginForm({onSetLogin, activeForm}) {
         <li>
           <BtnLogin isLoggedIn={false} onClick={handleLoginSubmit}></BtnLogin>
         </li>
-      <li>
+      <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <p>
           아직 계정이 없으신가요?             
         </p>
