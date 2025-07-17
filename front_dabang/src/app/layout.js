@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
               width: '100%',
               minHeight: '100vh',
               margin: '0 auto',
-              backgroundColor:'lightgrey',
               paddingTop: {
                 xs: '250px',
                 md: '20px'

@@ -8,6 +8,10 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
+      <div className={styles.languageButtons}>
+        <BtnMultlLang locale={"kr"} label={"한국어"}/>
+        <BtnMultlLang locale={"en"} label={"English"}/> 
+      </div>
         <div className={styles.logo}>nunecine</div>
         <nav className={styles.nav}>
           <Link href="/main" className={styles.link}>Main</Link>
@@ -15,10 +19,6 @@ export default function Header() {
           <Link href="/services" className={styles.link}>Services</Link>
           <Link href="/contact" className={styles.link}>Contact</Link>
         </nav>
-      </div>
-      <div className={styles.languageButtons}>
-        <BtnMultlLang locale={"kr"} label={"한국어"}/>
-        <BtnMultlLang locale={"en"} label={"English"}/> 
       </div>
     </header>
   );

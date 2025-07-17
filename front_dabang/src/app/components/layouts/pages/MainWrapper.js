@@ -4,13 +4,15 @@ import { isAuthenticatedClient, getUserTokenClient } from '@/app/components/func
 import CircularProgress, {  circularProgressClasses } from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Trans from '@/app/components/common/Trans';
-import LoggedInHome from "./LoggedInHome";
+import UserHome from "./UserHome";
+import AdminHome from "./AdminHome";
 import LoggedOutHome from "./LoggedOutHome";
 
 export default function MainWrapper(){
     const [authenticated, setAuthenticated] = useState(true);
     const [loadingAuth, setLoadingAuth] = useState(true);
     
+    //권한 체크 추가 예정 (admin / user)
 
     useEffect(() => {
       const checkAuth = () => {
@@ -52,8 +54,10 @@ export default function MainWrapper(){
     
     return (
         <>
-          {false ? (
-            <LoggedInHome handleLogin={setAuthenticated} />
+          {authenticated ? (
+            // 권한에 따라 분기
+            <UserHome handleLogin={setAuthenticated} />
+            // <AdminHome/>
           ) : (
             <LoggedOutHome handleLogin={setAuthenticated} />
           )}
