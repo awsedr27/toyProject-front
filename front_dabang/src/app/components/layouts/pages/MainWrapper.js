@@ -3,9 +3,6 @@ import { useState, useEffect } from 'react';
 import { isAuthenticatedClient, getUserTokenClient } from '@/app/components/function/FncAuthClient';
 import CircularProgress, {  circularProgressClasses } from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import Trans from '@/app/components/common/Trans';
-import UserHome from "./UserHome";
-import AdminHome from "./AdminHome";
 import LoggedOutHome from "./LoggedOutHome";
 
 export default function MainWrapper(){
@@ -54,13 +51,6 @@ export default function MainWrapper(){
     
     return (
         <>
-          {authenticated ? (
-            // 권한에 따라 분기
-            <UserHome handleLogin={setAuthenticated} />
-            // <AdminHome/>
-          ) : (
-            <LoggedOutHome handleLogin={setAuthenticated} />
-          )}
         </>
     );
 

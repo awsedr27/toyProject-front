@@ -1,12 +1,12 @@
 // components/LoggedOutHome.js
 'use client';
 
-import LoginForm from '@/app/components/layouts/forms/LoginForm'; // 앞서 만든 LoginForm 컴포넌트 임포트
+import LoginForm from '@/app/login/LoginForm'; // 앞서 만든 LoginForm 컴포넌트 임포트
 import SignupForm from '@/app/components/layouts/forms/SignupForm';
 import React, { useEffect, useState, useRef } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
-import logo from '@/../public/images/logo.png'
+import logo_typo from '@/../public/images/logo_typo.png'
 import Trans from '@/app/components/common/Trans';
 import BtnMultlLang from '@/app/components/buttons/BtnMultiLang';
 import { CustomBox } from '@/styles/CommonStyles';
@@ -31,7 +31,7 @@ export default function LoggedOutHome({handleLogin}) {
           </Box>
         <Stack  direction={{ xs: 'column', md: 'row' }}  alignItems={{ xs: 'center', md: 'flex-start' }}  style={{top:'30px'}} >
           <CustomBox sx={{ padding: '10px', textAlign: 'center' , borderRadius: '90px',  flexShrink: 0}}>
-            <Image src={logo} alt="logo" width={'150'} height={'150'} />
+            <Image src={logo_typo} alt="logo" width={'150'} height={'150'} />
           </CustomBox>
            <Stack spacing={2} sx={{ flexGrow: 1 }}>
             <CustomBox>

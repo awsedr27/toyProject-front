@@ -1,12 +1,12 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import BtnLogin from "../../buttons/BtnLogin";
-import BtnSingUp from "../../buttons/BtnSignUp";
+import BtnLogin from "../components/buttons/BtnLogin";
+import BtnSingUp from "../components/buttons/BtnSignUp";
 import { TextField, FormControl } from '@mui/material';
-import Login from '../../function/FncLogin';
+import Login from '../components/function/FncLogin';
 import { useRouter } from 'next/navigation';
 
-export default function LoginForm({onSetLogin, activeForm}) {
+export default function LoginForm({onSetLogin}) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 표시용
@@ -57,10 +57,6 @@ export default function LoginForm({onSetLogin, activeForm}) {
     }
       }, [isLoading]);
 
-  const signupOpen = () => {
-    activeForm("S");
-  }
-
   return (
       <div className="login-container">
     <h1>로그인</h1>
@@ -99,7 +95,7 @@ export default function LoginForm({onSetLogin, activeForm}) {
         <p>
           아직 계정이 없으신가요?             
         </p>
-        <BtnSingUp activeForm={signupOpen}></BtnSingUp>
+        <BtnSingUp></BtnSingUp>
       </li>
       </ul>
       </FormControl>

@@ -64,9 +64,11 @@ export const movieTitleTypographyStyles = {
   lineHeight: '1.2em', // 폰트 크기에 맞는 줄 높이 (폰트 크기에 따라 조절)
   maxHeight: '1.2em',  // 최대 높이를 한 줄 높이로 제한하여 두 줄이 되는 것을 방지
   marginBottom: '4px', // 제목과 연도 사이의 간격
+  color: 'white',
+  
 };
 
-// scrollbarStyles는 이 변경에 직접적인 영향 없음
+// scrollbarStyles는 이 변경에 직접적인 영향 없음`
 export const scrollbarStyles = (theme) => ({
     scrollbarWidth: 'thin',
     '&::-webkit-scrollbar': {

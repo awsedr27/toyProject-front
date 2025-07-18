@@ -7,7 +7,6 @@
   top: 0;
   z-index: 1000;
   width: 100%;
-  margin-top: 30px; 
 }
 
 .container {
@@ -42,11 +41,11 @@
   color: #61dafb;
 }
 
-.languageButtons {
-  position: absolute; 
-  bottom: 70px;      
-  right: 30px;           
-  z-index: 11;        
+.upperHeaderContainer {
   display: flex; 
-  margin-bottom: 5px;    
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  /* background-color: #f0f0f0; 테스트용 배경색 */
 }

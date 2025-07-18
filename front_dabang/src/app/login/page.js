@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import LoginForm from '../components/layouts/forms/LoginForm';
-import api from '../../lib/api';
+import LoginForm from './LoginForm';
 
-export default function Home() {
+export default function LoginPage({handleLogin}) {
   return (
-    <LoginForm></LoginForm>
+    <>
+      <LoginForm/>
+    </>
   );
 }

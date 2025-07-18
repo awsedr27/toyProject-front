@@ -1,6 +1,6 @@
 import './globals.css'
-import I18nextProvider from '@/app/components/util/I18nProvider';
-import MyThemeProvider from '@/app/components/util/ThemeProvieder';
+import I18nextProvider from '../../util/I18nProvider';
+import MyThemeProvider from '../../util/ThemeProvider';
 import { Box } from '@mui/material'; 
 export default function RootLayout({ children }) {
   return (
@@ -15,10 +15,6 @@ export default function RootLayout({ children }) {
               width: '100%',
               minHeight: '100vh',
               margin: '0 auto',
-              paddingTop: {
-                xs: '250px',
-                md: '20px'
-              },
             }}
           >
               {children}
