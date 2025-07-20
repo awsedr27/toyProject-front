@@ -6,6 +6,10 @@
        ,"BTN.LOG_IN" :"Sign In"
        ,"BTN.LOG_OUT" :"Log Out"
        ,"BTN.SIGN_UP" :"Sign Up"
+       ,"LOGIN.PHOLODER.ID" :"ID"
+       ,"LOGIN.PHOLODER.PW" :"PASSWORD"
+       ,"LOGIN.TITLE.CREATE_ACCOUNT" : "Don't have an account?"
+       ,"LOGIN.TITLE.LOGIN" :"Sign In"
     }
   },
   "kr": {
@@ -15,6 +19,10 @@
       ,"BTN.LOG_IN" :"로그인"
       ,"BTN.LOG_OUT" :"로그아웃"
       ,"BTN.SIGN_UP" :"회원가입"
+      ,"LOGIN.PHOLODER.ID" :"아이디"
+      ,"LOGIN.PHOLODER.PW" : "비밀번호"
+      ,"LOGIN.TITLE.CREATE_ACCOUNT" : "아직 계정이 없으신가요?"
+      ,"LOGIN.TITLE.LOGIN" :"로그인"
     }
   }
 }

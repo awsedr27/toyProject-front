@@ -5,6 +5,7 @@ import BtnSingUp from "../components/buttons/BtnSignUp";
 import { TextField, FormControl } from '@mui/material';
 import Login from '../components/function/FncLogin';
 import { useRouter } from 'next/navigation';
+import Trans from '../components/common/Trans';
 
 export default function LoginForm({onSetLogin}) {
   const [id, setId] = useState('');
@@ -59,7 +60,7 @@ export default function LoginForm({onSetLogin}) {
 
   return (
       <div className="login-container">
-    <h1>로그인</h1>
+    <h1><Trans tkey={"LOGIN.TITLE.LOGIN"}/></h1>
     <div className="login-form">
       <FormControl>
       <ul  style={{ paddingRight: '40px' }}>
@@ -67,7 +68,7 @@ export default function LoginForm({onSetLogin}) {
             <TextField
               id="userId"
               name="id"
-              label="아이디" 
+              label={<Trans tkey={"LOGIN.PHOLODER.ID"}/>}
               variant="outlined"
               type="text"
               value={id}
@@ -80,7 +81,7 @@ export default function LoginForm({onSetLogin}) {
             <TextField
               id="password"
               name="password"
-              label="비밀번호"
+              label={<Trans tkey={"LOGIN.PHOLODER.PW"}/>}
               variant="outlined"
               type="password"
               value={password}
@@ -93,7 +94,7 @@ export default function LoginForm({onSetLogin}) {
         </li>
       <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <p>
-          아직 계정이 없으신가요?             
+          <Trans tkey={"LOGIN.TITLE.CREATE_ACCOUNT"}/>
         </p>
         <BtnSingUp></BtnSingUp>
       </li>

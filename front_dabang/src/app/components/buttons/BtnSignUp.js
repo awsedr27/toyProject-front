@@ -1,8 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-
 import { Button, Modal, Box } from '@mui/material';
-
+import Trans from '../common/Trans';
 
 export default function BtnSingUp({ activeForm }) {
 
@@ -13,7 +12,7 @@ export default function BtnSingUp({ activeForm }) {
     <>
 
       <Button variant="contained" color="primary" onClick={signupClick}>
-        회원가입
+        <Trans tkey={"BTN.SIGN_UP"}/>
       </Button>
     </>
   );
