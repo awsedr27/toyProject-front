@@ -4,7 +4,7 @@ import api from '@/lib/api';
 export default async function Signup(formData) {
   try {
     // 회원가입 요청
-    const response = await api.post('/users/signup',  formData);
+    const response = await api.post('/api/auth/signup',  formData);
     console.log(response);
     return {isSuccess: true,message: response.data.message}
      } catch (error) {
