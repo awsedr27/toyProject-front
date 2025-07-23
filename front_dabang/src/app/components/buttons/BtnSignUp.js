@@ -13,10 +13,9 @@ export default function BtnSingUp({ activeForm }) {
   }
   return (
     <>
-
-      <Button variant="contained" color="primary" onClick={signupClick}>
-        <Trans tkey={"BTN.SIGN_UP"}/>
-      </Button>
+          <Button variant="contained" color="primary" onClick={signupClick}>
+            <Trans tkey={"BTN.SIGN_UP"}/>
+          </Button>
     </>
   );
 }

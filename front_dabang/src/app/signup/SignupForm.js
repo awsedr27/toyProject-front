@@ -216,14 +216,14 @@ export default function SignUpPage({activeForm}) {
                     required
                 />
               </li>
-              <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <ul style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <li>
                   <Button variant="contained" onClick={signUpSubmit}>Sign Up</Button>
                   <Button variant="contained" color="primary" onClick={closeSignup}>
                     취소
                   </Button>
                 </li>
-              </li>
+              </ul>
             </ul>
           </FormControl>
         </div>
