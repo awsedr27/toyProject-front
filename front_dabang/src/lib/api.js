@@ -1,35 +1,57 @@
 import axios from 'axios';
-// Axios 인스턴스 생성
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL, // || 'http://localhost:8080', // 스프링부트 주소
-  withCredentials: true, // 필요 시 쿠키 포함
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000',
+  withCredentials: true, // 쿠키 자동 포함
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// 요청 인터셉터 (예: JWT 토큰 자동 추가)
-api.interceptors.request.use(
-  (config) => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+let isRefreshing = false;
+let failedQueue = [];
 
-// 응답 인터셉터 (예: 에러 처리 통합)
+const processQueue = (error) => {
+  failedQueue.forEach(({ resolve, reject }) => {
+    if (error) reject(error);
+    else resolve();
+  });
+  failedQueue = [];
+};
+
 api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response) {
-      const { status, data } = error.response;
-      console.error(`[API ERROR] ${status}:`, data);
-    } else {
-      console.error('[API ERROR] 네트워크 오류 또는 서버 연결 실패');
+  response => response,
+  error => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      if (isRefreshing) {
+        return new Promise((resolve, reject) => {
+          failedQueue.push({ resolve, reject });
+        })
+          .then(() => api(originalRequest))
+          .catch(err => Promise.reject(err));
+      }
+
+      originalRequest._retry = true;
+      isRefreshing = true;
+
+      return new Promise((resolve, reject) => {
+        api.post('/api/auth/refresh') // 리프레시 토큰 API 호출
+          .then(() => {
+            processQueue(null);
+            resolve(api(originalRequest)); // 원래 요청 재시도
+          })
+          .catch(err => {
+            processQueue(err);
+            reject(err);
+          })
+          .finally(() => {
+            isRefreshing = false;
+          });
+      });
     }
+
     return Promise.reject(error);
   }
 );
