@@ -1,15 +1,14 @@
 'use client';
 import React, { useState } from 'react';
-import { redirect } from 'next/navigation';
-
+import { useRouter } from 'next/navigation';
 import { Button, Modal, Box } from '@mui/material';
 import Trans from '../common/Trans';
 
 export default function BtnSingUp({ activeForm }) {
-
+    const router = useRouter();
   const signupClick = () => {
     //activeForm();
-    redirect("signup")
+      router.push("signup");
   }
   return (
     <>
