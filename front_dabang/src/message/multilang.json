@@ -1,20 +1,55 @@
 {
   "en": {
     "translation": {
-      "LOGOUT.WELCOME": "Welcome"
-       ,"LOGOUT.PLEASE_LOGIN":"Sign in to access all services."
-       ,"BTN.LOG_IN" :"Sign In"
-       ,"BTN.LOG_OUT" :"Log Out"
-       ,"BTN.SIGN_UP" :"Sign Up"
+      "COMM.BTN.OK" : "OK" ,
+      "COMM.BTN.CANCEL" : "Cancel", 
+      "COMM.BTN.CLOSE" : "Close", 
+      "BTN.CANCEL" :"Cancel",
+      "BTN.LOG_IN" :"Sign In",
+      "BTN.LOG_OUT" :"Log Out",
+      "BTN.SIGN_UP" :"Sign Up",
+      "LOGIN.PHOLODER.ID" :"ID",
+      "LOGIN.PHOLODER.PW" :"PASSWORD",
+      "LOGIN.TITLE.CREATE_ACCOUNT" : "Don't have an account?",
+      "LOGIN.TITLE.LOGIN" :"Sign In",
+      "LOGIN.ALERT.ENTER_ID_PW" : "Enter the ID/PW",
+      "SIGNUP.ID" :"ID",
+      "SIGNUP.PW" :"Password",
+      "SIGNUP.PW_CHECK" :"PW Check",
+      "SIGNUP.E_MAIL" :"E-mail",
+      "SIGNUP.NAME" :"Name",
+      "SIGNUP.PHONE" :"Phone Number",
+      "SIGNUP.VALID.PW" :"The password must contain a mix of at least 8 English characters and special characters (!,@,#,$,% ,^,&,*.().",
+      "SIGNUP.VALID.PW_CHECK" :"Password doesn't match.",
+      "SIGNUP.VALID.E_MAIL" :"The email form is not correct.",
+      "SIGNUP.VALID.PHONE" :"The phone number form is not correct.",
+      "SIGNUP.PH.PHONE" :"Please enter a number only."
     }
   },
   "kr": {
     "translation": {
-      "LOGOUT.WELCOME": "환영합니다"
-      ,"LOGOUT.PLEASE_LOGIN":"서비스를 이용하려면 로그인해주세요."
-      ,"BTN.LOG_IN" :"로그인"
-      ,"BTN.LOG_OUT" :"로그아웃"
-      ,"BTN.SIGN_UP" :"회원가입"
+      "COMM.BTN.OK" : "확인", 
+      "COMM.BTN.CANCEL" : "취소" ,
+      "COMM.BTN.CLOSE" : "닫기", 
+      "BTN.LOG_IN" :"로그인",
+      "BTN.LOG_OUT" :"로그아웃",
+      "BTN.SIGN_UP" :"회원가입",
+      "LOGIN.PHOLODER.ID" :"아이디",
+      "LOGIN.PHOLODER.PW" : "비밀번호",
+      "LOGIN.TITLE.CREATE_ACCOUNT" : "아직 계정이 없으신가요?",
+      "LOGIN.TITLE.LOGIN" :"로그인",
+      "LOGIN.ALERT.ENTER_ID_PW" : "ID/PW 를 입력해주세요.",
+      "SIGNUP.ID" :"아이디",
+      "SIGNUP.PW" :"비밀번호",
+      "SIGNUP.PW_CHECK" :"비밀번호 확인",
+      "SIGNUP.E_MAIL" :"이메일",
+      "SIGNUP.NAME" :"이름",
+      "SIGNUP.PHONE" :"전화번호",
+      "SIGNUP.VALID.PW" :"비밀번호는 8글자이상 영문과 특수문자( !,@,#,$,%,^,&,*.(.) )가 혼합되어야합니다.",
+      "SIGNUP.VALID.PW_CHECK" :"비밀번호가 일치하지 않습니다.",
+      "SIGNUP.VALID.E_MAIL" :"이메일 양식이 맞지 않습니다.",
+      "SIGNUP.VALID.PHONE" :"전화번호 양식이 맞지 않습니다.",
+      "SIGNUP.PH.PHONE" :"숫자만 입력해주세요."
     }
   }
 }
