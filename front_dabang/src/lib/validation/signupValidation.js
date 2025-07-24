@@ -1,4 +1,4 @@
-import Joi from 'joi'
+import Joi from 'joi';
 
 export const signUpValidation = Joi.object({
   userId: Joi.string()
@@ -50,5 +50,5 @@ export const signUpValidation = Joi.object({
       'any.required': '전화번호는 필수 입력값입니다.',
     }),
 
-  passwordCk: Joi.string().optional(), //삭제예정
-})
+  passwordCk: Joi.string().optional(), // 삭제 예정
+});

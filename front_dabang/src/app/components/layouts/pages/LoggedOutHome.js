@@ -2,7 +2,7 @@
 'use client';
 
 import LoginForm from '@/app/login/LoginForm'; // 앞서 만든 LoginForm 컴포넌트 임포트
-import SignupForm from '@/app/components/layouts/forms/SignupForm';
+import SignupForm from '@/app/signup/SignupForm';
 import React, { useEffect, useState, useRef } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import Image from 'next/image';

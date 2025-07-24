@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import {Button, FormControl, TextField} from "@mui/material";
 import Signup from "@/app/components/function/FncSignup";
 import { useRouter } from 'next/navigation';
+import Trans from "@/app/components/common/Trans";
 
 export default function SignUpPage({activeForm}) {
   const router = useRouter();
@@ -139,7 +140,7 @@ export default function SignUpPage({activeForm}) {
                 <TextField
                     id="userId1"
                     name="userId"
-                    label="아이디"
+                    label={<Trans tkey={"SIGNUP.ID"}/>}
                     variant="outlined"
                     type="text"
                     onChange={onChange}
@@ -151,13 +152,13 @@ export default function SignUpPage({activeForm}) {
                 <TextField
                     id="password1"
                     name="password"
-                    label="비밀번호"
+                    label={<Trans tkey={"SIGNUP.PW"}/>}
                     variant="outlined"
                     type="password"
                     onChange={onChange}
                     onBlur={focusOut}
                     error={errorId.password}
-                    helperText={errorId.password ? "비밀번호는 8글자이상 영문과 특수문자( !,@,#,$,%,^,&,*.(.) )가 혼합되어야합니다." : ''}
+                    helperText={errorId.password ? <Trans tkey={"SIGNUP.VALID.PW"}/> : ''}
                     required
                 />
               </li>
@@ -165,13 +166,13 @@ export default function SignUpPage({activeForm}) {
                 <TextField
                     id="passwordCk"
                     name="passwordCk"
-                    label="비밀번호확인"
+                    label={<Trans tkey={"SIGNUP.PW_CHECK"}/>}
                     variant="outlined"
                     type="password"
                     onBlur={focusOut}
                     onChange={onChange}
                     error={errorId.passwordCk}
-                    helperText={errorId.passwordCk ? "비밀번호가 일치하지 않습니다." : ""}
+                    helperText={errorId.passwordCk ? <Trans tkey={"SIGNUP.VALID.PW_CHECK"}/> : ""}
                     required
                 />
               </li>
@@ -179,13 +180,13 @@ export default function SignUpPage({activeForm}) {
                 <TextField
                     id="email"
                     name="email"
-                    label="이메일"
+                    label={<Trans tkey={"SIGNUP.E_MAIL"}/>}
                     variant="outlined"
                     type="text"
                     onBlur={focusOut}
                     onChange={onChange}
                     error={errorId.email}
-                    helperText={errorId.email ? "이메일 형식이 일치하지 않습니다." : ""}
+                    helperText={errorId.email ? <Trans tkey={"SIGNUP.VALID.E_MAIL"}/> : ""}
                     required
                 />
               </li>
@@ -193,7 +194,7 @@ export default function SignUpPage({activeForm}) {
                 <TextField
                     id="name"
                     name="name"
-                    label="이름"
+                    label={<Trans tkey={"SIGNUP.NAME"}/>}
                     variant="outlined"
                     type="text"
                     onChange={onChange}
@@ -205,25 +206,25 @@ export default function SignUpPage({activeForm}) {
                 <TextField
                     id="phone"
                     name="phoneNumber"
-                    label="전화번호"
+                    label={<Trans tkey={"SIGNUP.PHONE"}/>}
                     variant="outlined"
                     type="text"
-                    placeholder={"숫자만입력"}
+                    placeholder={<Trans tkey={"SIGNUP.PH.PHONE"}/>}
                     onChange={onChange}
                     onBlur={focusOut}
                     error={errorId.phoneNumber}
-                    helperText={errorId.phoneNumber ? "전화번호 양식이 맞지 않습니다." : ""}
+                    helperText={errorId.phoneNumber ? <Trans tkey={"SIGNUP.VALID.PHONE"}/> : ""}
                     required
                 />
               </li>
-              <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <ul style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <li>
-                  <Button variant="contained" onClick={signUpSubmit}>Sign Up</Button>
+                  <Button variant="contained" onClick={signUpSubmit}><Trans tkey={"BTN.SIGN_UP"}/></Button>
                   <Button variant="contained" color="primary" onClick={closeSignup}>
-                    취소
+                    <Trans tkey={"BTN.CANCEL"}/>
                   </Button>
                 </li>
-              </li>
+              </ul>
             </ul>
           </FormControl>
         </div>
