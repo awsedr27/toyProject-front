@@ -6,14 +6,33 @@ import { TextField, FormControl } from '@mui/material';
 import Login from '../components/function/FncLogin';
 import { useRouter } from 'next/navigation';
 import Trans from '../components/common/Trans';
+import MessageBox from '../components/common/MessageBox';
+import {Button} from '@mui/material'
 
 export default function LoginForm({onSetLogin}) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 표시용
+  const [openMessageBox, setOpenMessageBox] = useState(false);
+  const [messageBoxProps, setMessageBoxProps] = useState({});
+      
+      const handleOpenMessageBox = (props) => {
+        setMessageBoxProps(props);
+        setOpenMessageBox(true);
+      };
+      const handleCloseMessageBox = () => {
+       setOpenMessageBox(false);
+      };
   const router = useRouter();
 
   const handleLoginSubmit = async () => {
+    if (id == '' || password == '') {
+      handleOpenMessageBox({
+          type: 'info',
+          message: <Trans tkey={"LOGIN.ALERT.ENTER_ID_PW"}/> ,
+        });
+    }
+
     setIsLoading(true);
 
     const formData = new FormData();
@@ -36,16 +55,17 @@ export default function LoginForm({onSetLogin}) {
     }
   };
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === 'id') setId(value);
     else if (name === 'password') setPassword(value);
   };
-
+  
   useEffect(() => {
     if (isLoading) {
       return () => {
-          <div style={{ padding: '50px', fontSize: '20px', textAlign: 'center' }}>
+        <div style={{ padding: '50px', fontSize: '20px', textAlign: 'center' }}>
           <div style={{ border: '4px solid #f3f3f3', borderTop: '4px solid #3498db', borderRadius: '50%', width: '30px', height: '30px', animation: 'spin 1s linear infinite', margin: '10px auto' }}></div>
           <style jsx>{`
             @keyframes spin {
@@ -55,11 +75,12 @@ export default function LoginForm({onSetLogin}) {
               `}</style>
         </div>
           };
-    }
+        }
       }, [isLoading]);
-
+      
   return (
-      <div className="login-container">
+    <>
+    <div className="login-container">
     <h1><Trans tkey={"LOGIN.TITLE.LOGIN"}/></h1>
     <div className="login-form">
       <FormControl>
@@ -102,5 +123,11 @@ export default function LoginForm({onSetLogin}) {
       </FormControl>
     </div>
   </div>
+    <MessageBox
+      open={openMessageBox}
+      onClose={handleCloseMessageBox}
+      {...messageBoxProps}
+    />
+    </>
   );
 }
