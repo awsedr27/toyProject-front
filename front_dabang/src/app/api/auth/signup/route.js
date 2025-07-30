@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { query } from '@/lib/db';
-import { signUpValidation } from '@/lib/validations';
+import { signUpValidation } from '@/lib/validation/signupValidation';
 
 export async function POST(req) {
   try {

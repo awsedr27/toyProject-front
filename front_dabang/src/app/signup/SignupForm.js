@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import {Button, FormControl, TextField} from "@mui/material";
-import Signup from "@/app/components/function/FncSignup";
 import { useRouter } from 'next/navigation';
 import Trans from "@/app/components/common/Trans";
 import api from "@/lib/api";

@@ -42,7 +42,7 @@ export default function LoginForm({onSetLogin}) {
         id : id,
         password : password
       };
-      const result = await api.post('/auth/login', requestBody);
+      const result = await api.post('/api/auth/login', requestBody);
       if (result.data.success) {
         console.log('로그인 성공!');
         router.replace('/main');
