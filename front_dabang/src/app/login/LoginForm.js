@@ -33,13 +33,9 @@ export default function LoginForm({onSetLogin}) {
     }
 
     setIsLoading(true);
-
-    const formData = new FormData();
-    formData.append('id', id); //name
-    formData.append('password', password);
     try {
       const requestBody = {
-        id : id,
+        userId : id,
         password : password
       };
       const result = await api.post('/api/auth/login', requestBody);

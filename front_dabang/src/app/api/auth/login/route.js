@@ -45,7 +45,7 @@ export async function POST(req) {
     }
 
     // 5. httpOnly 쿠키 설정
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
 
     cookieStore.set('accessToken', accessToken, {
       httpOnly: true,
