@@ -55,7 +55,7 @@ export async function POST(req) {
 
     cookieStore.set('refreshToken', refreshToken, {
       httpOnly: true,
-      path: '/api/auth/refresh',
+      path: '/',
       maxAge: 60 * 60 * 24 * 7, // 7일
     });
 

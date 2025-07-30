@@ -4,6 +4,7 @@ import {Button, FormControl, TextField} from "@mui/material";
 import Signup from "@/app/components/function/FncSignup";
 import { useRouter } from 'next/navigation';
 import Trans from "@/app/components/common/Trans";
+import api from "@/lib/api";
 
 export default function SignUpPage({activeForm}) {
   const router = useRouter();
@@ -118,9 +119,13 @@ export default function SignUpPage({activeForm}) {
     e.preventDefault();
     let tempParam = JSON.stringify(loginValue);
     try {
-      const response = await Signup(tempParam);
-      alert(response.message);
-      router.replace('/login');
+      const response = await api.post('/api/auth/signup',  tempParam);
+      if(response.data.success){
+        console.log('회원가입 성공');
+        router.replace('/login');
+      }else{
+        console.log('회원가입 실패');
+      }
     } catch (err) {
       alert('네트워크 오류가 발생했습니다.');
     }
