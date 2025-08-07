@@ -59,6 +59,12 @@ const resultCodes = {
     title: '비밀번호가 일치하지 않습니다.',
     level: 'warn',
   },
+  USER_INFO_INVAILD: {
+    code: 'USR-0002',
+    status: 409,
+    title: '입력값이 유효하지 않습니다.',
+    level: 'warn',
+  },
   DB_ERROR: {
     code: 'USR-0003',
     status: 500,
