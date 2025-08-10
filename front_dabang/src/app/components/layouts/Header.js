@@ -2,14 +2,19 @@
 import Link from 'next/link';
 import styles from './Header.module.css';
 import BtnMultlLang from '../buttons/BtnMultiLang';
-import { Box } from '@mui/material'
+import Image from 'next/image';
+import { Box, IconButton, useTheme } from '@mui/material'
 
 
 export default function Header() {
+const theme = useTheme();
   return (
     <>
       <Box className={styles.upperHeaderContainer}>
         <BtnMultlLang></BtnMultlLang>
+        <Link href="/mypage">
+          <Image src="/images/Icons/user.png" alt="myPage" width={35} height={35}/>
+        </Link>
       </Box>
       <header className={styles.header}>
         <div className={styles.container}>
