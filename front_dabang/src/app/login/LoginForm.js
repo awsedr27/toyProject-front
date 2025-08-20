@@ -41,7 +41,7 @@ export default function LoginForm({onSetLogin}) {
       const result = await api.post('/api/auth/login', requestBody);
       if (result.data.success) {
         console.log('로그인 성공!');
-        router.replace('/profile');
+        router.replace('/movie');
       } else {
         console.log('로그인 실패');
       }
