@@ -1,7 +1,9 @@
- export default function movieHome({children}) {
+import MovieForm from "@/app/movie/MovieForm";
+
+export default function MovieList({children}) {
   return (
     <>
-      {children}
+        <MovieForm/>
     </>
   );
  }
