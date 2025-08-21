@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export function createApiClient(config = {}) {
-  const apiClient = axios.create({
+const externalApi = (config = {}) => {
+  const instance = axios.create({
     timeout: 5000,
     ...config,
   });
 
-  apiClient.interceptors.request.use(
+  instance.interceptors.request.use(
     (reqConfig) => {
       console.log(`요청 시작: ${reqConfig.url}`);
       return reqConfig;
@@ -17,7 +17,7 @@ export function createApiClient(config = {}) {
     }
   );
 
-  apiClient.interceptors.response.use(
+  instance.interceptors.response.use(
     (response) => {
       return response.data;
     },
@@ -35,5 +35,7 @@ export function createApiClient(config = {}) {
     }
   );
 
-  return apiClient;
-}
+  return instance;
+};
+
+export default externalApi;

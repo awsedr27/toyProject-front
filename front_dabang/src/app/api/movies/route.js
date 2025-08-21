@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
-import { createApiClient } from "@/lib/apiClient";
+import externalApi from "@/lib/externalApi";
 import { query } from '@/lib/db';
 
 const KMDB_API_BASE_URL = process.env.KMDB_API_BASE_URL;
 const KMDB_API_SERVICE_KEY = process.env.KMDB_API_SERVICE_KEY;
 
-export async function GET(req) {
+export async function POST(req) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get("query");
   const listCount = searchParams.get("listCount") || 20;
 
-  const kmdbClient = createApiClient({
+  const kmdbApi = externalApi({
     baseURL: KMDB_API_BASE_URL,
   });
 
@@ -24,7 +24,7 @@ export async function GET(req) {
       params.title = query;
     }
 
-    const data = await kmdbClient.get("", { params });
+    const data = await kmdbApi.get("", { params });
 
     return NextResponse.json(data);
   } catch (error) {

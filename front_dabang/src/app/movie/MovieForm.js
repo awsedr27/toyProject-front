@@ -1,25 +1,22 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { useApi } from '@/hooks/useApi'
 import { Box, Typography, TextField, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function MovieListPage() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
+  const { post } = useApi();
   const [searchQuery, setSearchQuery] = useState('');
 
   const fetchMovies = async (query = '') => {
       setError(null);
       try {
-        const response = await fetch('/api/movies');
+        const request = { query: query };
+        const response = await post('/api/movies', request);
 
-        if (!response.ok) {
-          console.log(response)
-          throw new Error('네트워크 응답이 올바르지 않습니다111.');
-        }
-
-        const data = await response.json();
-        const movieList = data?.Data?.[0]?.Result || [];
+        const movieList = response?.Data?.[0]?.Result || [];
         setMovies(movieList);
 
       } catch (err) {

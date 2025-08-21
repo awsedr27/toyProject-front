@@ -7,7 +7,7 @@ export function useApi() {
 
   // GET 요청 함수
   const get = useCallback(
-    async (url, config) => {
+    async (url, config = {}) => {
       try {
         const res = await api.get(url, config)
         if (res.data?.routeUrl) {
@@ -24,7 +24,7 @@ export function useApi() {
 
   // POST 요청 함수
   const post = useCallback(
-    async (url, data, config) => {
+    async (url, data, config = {}) => {
       try {
         const res = await api.post(url, data, config)
         if (res.data?.routeUrl) {
