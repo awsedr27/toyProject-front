@@ -110,18 +110,21 @@ export default function LoginForm({onSetLogin}) {
         <li>
           <BtnLogin isLoggedIn={false} onClick={handleLoginSubmit}></BtnLogin>
         </li>
-      <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <p>
-          <Trans tkey={"LOGIN.TITLE.CREATE_ACCOUNT"}/>
-        </p>
-        <BtnSingUp></BtnSingUp>
-      </li>
+        <li style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <p style={{cursor:"pointer"}} onClick={() => {router.push('/user/find')}}>
+            <Trans tkey={"LOGIN.TITLE.FIND_ACCOUNT"}/>
+          </p>
+          <p>
+            <Trans tkey={"LOGIN.TITLE.CREATE_ACCOUNT"}/>
+          </p>
+          <BtnSingUp></BtnSingUp>
+        </li>
       </ul>
       </FormControl>
     </div>
-  </div>
-    <MessageBox
-      open={openMessageBox}
+    </div>
+      <MessageBox
+          open={openMessageBox}
       onClose={handleCloseMessageBox}
       {...messageBoxProps}
     />
