@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 import BtnLogin from "../components/buttons/BtnLogin";
 import BtnSingUp from "../components/buttons/BtnSignUp";
 import { TextField, FormControl } from '@mui/material';
-import Login from '../components/function/FncLogin';
-import { useRouter } from 'next/navigation';
 import Trans from '../components/common/Trans';
 import MessageBox from '../components/common/MessageBox';
-import {Button} from '@mui/material'
+import api from "@/lib/api";
+import { useRouter } from 'next/navigation';
 
 export default function LoginForm({onSetLogin}) {
   const [id, setId] = useState('');
@@ -34,19 +33,17 @@ export default function LoginForm({onSetLogin}) {
     }
 
     setIsLoading(true);
-
-    const formData = new FormData();
-    formData.append('id', id); //name
-    formData.append('password', password); 
     try {
-      const result = await Login(formData);
-      
-      if (result.isSuccess === true) {
-        localStorage.setItem('token', result.token);
-        console.log(localStorage.getItem('token'));
-        onSetLogin(true); // 로그인 성공 전달
-      }else{
-        alert(result.message);
+      const requestBody = {
+        userId : id,
+        password : password
+      };
+      const result = await api.post('/api/auth/login', requestBody);
+      if (result.data.success) {
+        console.log('로그인 성공!');
+        router.replace('/movie');
+      } else {
+        console.log('로그인 실패');
       }
     } catch (error) {
       console.error('클라이언트 측 에러:', error);
@@ -113,18 +110,21 @@ export default function LoginForm({onSetLogin}) {
         <li>
           <BtnLogin isLoggedIn={false} onClick={handleLoginSubmit}></BtnLogin>
         </li>
-      <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <p>
-          <Trans tkey={"LOGIN.TITLE.CREATE_ACCOUNT"}/>
-        </p>
-        <BtnSingUp></BtnSingUp>
-      </li>
+        <li style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <p style={{cursor:"pointer"}} onClick={() => {router.push('/user/find')}}>
+            <Trans tkey={"LOGIN.TITLE.FIND_ACCOUNT"}/>
+          </p>
+          <p>
+            <Trans tkey={"LOGIN.TITLE.CREATE_ACCOUNT"}/>
+          </p>
+          <BtnSingUp></BtnSingUp>
+        </li>
       </ul>
       </FormControl>
     </div>
-  </div>
-    <MessageBox
-      open={openMessageBox}
+    </div>
+      <MessageBox
+          open={openMessageBox}
       onClose={handleCloseMessageBox}
       {...messageBoxProps}
     />

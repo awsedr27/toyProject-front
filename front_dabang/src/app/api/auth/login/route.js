@@ -45,7 +45,7 @@ export async function POST(req) {
     }
 
     // 5. httpOnly 쿠키 설정
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
 
     cookieStore.set('accessToken', accessToken, {
       httpOnly: true,
@@ -55,7 +55,7 @@ export async function POST(req) {
 
     cookieStore.set('refreshToken', refreshToken, {
       httpOnly: true,
-      path: '/api/auth/refresh',
+      path: '/',
       maxAge: 60 * 60 * 24 * 7, // 7일
     });
 

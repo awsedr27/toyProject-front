@@ -15,7 +15,10 @@ export function signRefreshToken(payload) {
 export function verifyToken(token) {
   try {
     return jwt.verify(token, JWT_SECRET);
-  } catch {
-    return null;
+  } catch (err) {
+    if (err.name === 'TokenExpiredError') {
+      return 'expired';    // 토큰 만료 상태만 별도 리턴
+    }
+    return null;           // 그 외 검증 실패
   }
 }

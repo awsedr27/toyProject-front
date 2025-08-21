@@ -1,11 +1,12 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import {Button, FormControl, TextField} from "@mui/material";
-import Signup from "@/app/components/function/FncSignup";
 import { useRouter } from 'next/navigation';
 import Trans from "@/app/components/common/Trans";
-
+import { useApi } from '@/hooks/useApi'
+import api from '@/lib/api'
 export default function SignUpPage({activeForm}) {
+  const { post } = useApi();
   const router = useRouter();
   const [formData, setFormData] = useState([]);
   const [errorId, setError] = useState({
@@ -116,11 +117,23 @@ export default function SignUpPage({activeForm}) {
       return false;
     }
     e.preventDefault();
-    let tempParam = JSON.stringify(loginValue);
+    console.log(loginValue);
+    const tempParam = {
+      userId : loginValue.userId,
+      password : loginValue.password,
+      name : loginValue.name,
+      email : loginValue.email,
+      phoneNumber : loginValue.phoneNumber
+    };
     try {
-      const response = await Signup(tempParam);
-      alert(response.message);
-      router.replace('/login');
+      //const response = await post('/api/auth/signup',tempParam);
+      const response = await post('/api/auth/signup',tempParam);
+      if(response.data.success){
+        console.log('회원가입 성공');
+        router.replace('/login');
+      }else{
+        console.log('회원가입 실패');
+      }
     } catch (err) {
       alert('네트워크 오류가 발생했습니다.');
     }
