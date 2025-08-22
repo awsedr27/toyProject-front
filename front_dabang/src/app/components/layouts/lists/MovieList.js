@@ -13,7 +13,7 @@
  } from "@mui/material";
  import MovieIcon from '@mui/icons-material/Movie';
  import SearchIcon from '@mui/icons-material/Search';
- import api from '@/lib/api';
+ import callInternalApi from '@/lib/callInternalApi';
 
  import {
    StyledMovieCard,
@@ -46,7 +46,7 @@
 
        console.log("API 요청 바디:", requestBody);
 
-       const response = await api.post('/movie/list', requestBody);
+       const response = await callInternalApi.post('/movie/list', requestBody);
 
        if (response.data && response.data.data
            && response.data.data.Data && response.data.data.Data.length > 0) {

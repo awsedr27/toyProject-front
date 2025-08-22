@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const api = axios.create({
+const callInternalApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000',
   withCredentials: true, // httpOnly 쿠키 포함 자동 전송
   headers: {
@@ -22,7 +22,7 @@ const processQueue = (error, token = null) => {
   failedQueue = []
 }
 
-api.interceptors.response.use(
+callInternalApi.interceptors.response.use(
   (response) => response,
   (error) => {
     const originalRequest = error.config
@@ -36,7 +36,7 @@ api.interceptors.response.use(
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject })
         })
-          .then(() => api(originalRequest))
+          .then(() => callInternalApi(originalRequest))
           .catch((err) => Promise.reject(err))
       }
 
@@ -44,12 +44,12 @@ api.interceptors.response.use(
       isRefreshing = true
 
       return new Promise((resolve, reject) => {
-        api
+        callInternalApi
           .post('/api/auth/refresh') // 리프레시 토큰으로 액세스 토큰 재발급 API 호출
           .then((res) => {
             // 재발급 성공 시 재시도 호출
             processQueue(null)
-            resolve(api(originalRequest))
+            resolve(callInternalApi(originalRequest))
           })
           .catch((err) => {
             processQueue(err)
@@ -65,4 +65,4 @@ api.interceptors.response.use(
   }
 )
 
-export default api
+export default callInternalApi

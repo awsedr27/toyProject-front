@@ -5,7 +5,7 @@ import BtnSingUp from "../components/buttons/BtnSignUp";
 import { TextField, FormControl } from '@mui/material';
 import Trans from '../components/common/Trans';
 import MessageBox from '../components/common/MessageBox';
-import api from "@/lib/api";
+import callInternalApi from "@/lib/callInternalApi";
 import { useRouter } from 'next/navigation';
 
 export default function LoginForm({onSetLogin}) {
@@ -38,7 +38,7 @@ export default function LoginForm({onSetLogin}) {
         userId : id,
         password : password
       };
-      const result = await api.post('/api/auth/login', requestBody);
+      const result = await callInternalApi.post('/api/auth/login', requestBody);
       if (result.data.success) {
         console.log('로그인 성공!');
         router.replace('/movie');

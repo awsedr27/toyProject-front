@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import externalApi from "@/lib/externalApi";
+import callExternalApi from "@/lib/callExternalApi";
 import { query } from '@/lib/db';
 
 const KMDB_API_BASE_URL = process.env.KMDB_API_BASE_URL;
@@ -10,7 +10,7 @@ export async function POST(req) {
   const query = searchParams.get("query");
   const listCount = searchParams.get("listCount") || 20;
 
-  const kmdbApi = externalApi({
+  const kmdbApi = callExternalApi({
     baseURL: KMDB_API_BASE_URL,
   });
 
