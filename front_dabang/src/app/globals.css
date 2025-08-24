@@ -7,13 +7,13 @@
 @font-face {
   font-family: "instagram";
   font-weight: 200;        
-  src: url("@/../public/fonts/Fontspring-DEMO-blue_vinyl_regular_ps_ot.otf"); 
+  src: url("/fonts/Fontspring-DEMO-blue_vinyl_regular_ps_ot.otf"); 
 }
 
 @font-face {
   font-family: "instagram";  
   font-weight: 500;      
-  src: url("@/../public/fonts/Fontspring-DEMO-blue_vinyl_bold_ps_ot.otf"); 
+  src: url("/fonts/Fontspring-DEMO-blue_vinyl_bold_ps_ot.otf"); 
 }
 
 .languageButtons {

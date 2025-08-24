@@ -5,7 +5,7 @@ import BtnSingUp from "../components/buttons/BtnSignUp";
 import { TextField, FormControl } from '@mui/material';
 import Trans from '../components/common/Trans';
 import MessageBox from '../components/common/MessageBox';
-import api from "@/lib/api";
+import callInternalApi from "@/lib/callInternalApi";
 import { useRouter } from 'next/navigation';
 
 export default function LoginForm({onSetLogin}) {
@@ -38,10 +38,10 @@ export default function LoginForm({onSetLogin}) {
         userId : id,
         password : password
       };
-      const result = await api.post('/api/auth/login', requestBody);
+      const result = await callInternalApi.post('/api/auth/login', requestBody);
       if (result.data.success) {
         console.log('로그인 성공!');
-        router.replace('/profile');
+        router.replace('/movie');
       } else {
         console.log('로그인 실패');
       }
@@ -110,18 +110,21 @@ export default function LoginForm({onSetLogin}) {
         <li>
           <BtnLogin isLoggedIn={false} onClick={handleLoginSubmit}></BtnLogin>
         </li>
-      <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <p>
-          <Trans tkey={"LOGIN.TITLE.CREATE_ACCOUNT"}/>
-        </p>
-        <BtnSingUp></BtnSingUp>
-      </li>
+        <li style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <p style={{cursor:"pointer"}} onClick={() => {router.push('/user/find')}}>
+            <Trans tkey={"LOGIN.TITLE.FIND_ACCOUNT"}/>
+          </p>
+          <p>
+            <Trans tkey={"LOGIN.TITLE.CREATE_ACCOUNT"}/>
+          </p>
+          <BtnSingUp></BtnSingUp>
+        </li>
       </ul>
       </FormControl>
     </div>
-  </div>
-    <MessageBox
-      open={openMessageBox}
+    </div>
+      <MessageBox
+          open={openMessageBox}
       onClose={handleCloseMessageBox}
       {...messageBoxProps}
     />
