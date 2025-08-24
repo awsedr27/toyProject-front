@@ -1,4 +1,5 @@
-import MyPageForm from "./mypageForm";
+import MyPageForm from "./MypageForm";
+import ProfilePic from "./ProfilePic";
 
 
 export default function MyPage() {
@@ -7,6 +8,7 @@ export default function MyPage() {
 
     return(
         <>
+        <ProfilePic></ProfilePic>
         <MyPageForm></MyPageForm>
         </>
     )
