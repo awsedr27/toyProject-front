@@ -4,7 +4,6 @@ import {Button, FormControl, TextField} from "@mui/material";
 import { useRouter } from 'next/navigation';
 import Trans from "@/app/components/common/Trans";
 import { useApi } from '@/hooks/useApi'
-import api from '@/lib/api'
 export default function SignUpPage({activeForm}) {
   const { post } = useApi();
   const router = useRouter();

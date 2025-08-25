@@ -13,6 +13,12 @@ const resultCodes = {
     title: '알 수 없는 오류',
     level: 'error',
   },
+  BAD_REQUEST: {
+    code: 'COM-4000',
+    status: 400,
+    title: '잘못된 요청입니다.',
+    level: 'warn',  // 보통 400 에러는 클라이언트 실수라 warning 레벨로 둬요
+  },
 
   // 인증/토큰
   AUTH_INVALID: {
