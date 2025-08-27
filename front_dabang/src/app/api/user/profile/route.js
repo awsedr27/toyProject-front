@@ -1,10 +1,9 @@
-import { query } from '@/lib/db'
 import resultCodes from '@/lib/resultCode'
 import { withAuth } from '@/lib/withAuth'
 
-async function handler(req, userId) {
+async function handler(req, userId, client) {
   try {
-    const result = await query(
+    const result = await client.query(
       `SELECT user_id, email, name, phone_number, used, created_at, updated_at 
        FROM users WHERE user_id = $1`,
       [userId]
