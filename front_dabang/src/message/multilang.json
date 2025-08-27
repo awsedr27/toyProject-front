@@ -5,6 +5,7 @@
       "COMM.BTN.CANCEL" : "Cancel", 
       "COMM.BTN.CLOSE" : "Close",
       "COMM.ALERT.SERVER_ERROR" : "Server error has occurred.",
+      "COMM.USER.TITLE" : "",
       "BTN.CANCEL" :"Cancel",
       "BTN.LOG_IN" :"Sign In",
       "BTN.LOG_OUT" :"Log Out",
@@ -37,7 +38,10 @@
       "AUTH-0004": "Access token expired. Please reissue.",
       "USR-0001": "User not found.",
       "USR-0002": "Duplicate ID or invalid input.",
-      "USR-0003": "Database error occurred."
+      "USR-0003": "Database error occurred.",
+      "MYPAGE.BTN.EDIT_PERSONAL_INFO": "Edit Personal Information",
+      "MYPAGE.BTN.MY_ACTIVITIES": "My Activities",
+      "MYPAGE.BTN.SETTINGS": "Settings"
 
     }
   },
@@ -47,6 +51,7 @@
       "COMM.BTN.CANCEL" : "취소" ,
       "COMM.BTN.CLOSE" : "닫기",
       "COMM.ALERT.SERVER_ERROR" : "서버 에러가 발생했습니다.",
+      "COMM.USER.TITLE" : " 님",
       "BTN.LOG_IN" :"로그인",
       "BTN.LOG_OUT" :"로그아웃",
       "BTN.SIGN_UP" :"회원가입",
@@ -78,7 +83,10 @@
       "AUTH-0004": "엑세스 토큰이 만료되었습니다. 재발급해주세요.",
       "USR-0001": "유저가 없습니다.",
       "USR-0002": "ID가 중복되었거나 입력값이 유효하지 않습니다.",
-      "USR-0003": "DB 처리 오류가 발생했습니다."
+      "USR-0003": "DB 처리 오류가 발생했습니다.",
+      "MYPAGE.BTN.EDIT_PERSONAL_INFO": "개인 정보 수정",
+      "MYPAGE.BTN.MY_ACTIVITIES": "내 활동",
+      "MYPAGE.BTN.SETTINGS": "설정"
     }
   }
 }
