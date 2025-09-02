@@ -5,23 +5,30 @@ import BtnSingUp from "../components/buttons/BtnSignUp";
 import { TextField, FormControl } from '@mui/material';
 import Trans from '../components/common/Trans';
 import MessageBox from '../components/common/MessageBox';
-import callInternalApi from "@/lib/callInternalApi";
 import { useRouter } from 'next/navigation';
+import ProgressBar from '../components/common/ProgressBar';
+import { useApi } from '@/hooks/useApi'
+import { useLoading } from '@/context/LoadingContext';
 
 export default function LoginForm({onSetLogin}) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // 로딩 상태 표시용
   const [openMessageBox, setOpenMessageBox] = useState(false);
   const [messageBoxProps, setMessageBoxProps] = useState({});
+  const {post} = useApi();
+  const { setIsReady } = useLoading(); 
+
+  useEffect(() => {
+    setIsReady(true);
+  }, [])
       
-      const handleOpenMessageBox = (props) => {
-        setMessageBoxProps(props);
-        setOpenMessageBox(true);
-      };
-      const handleCloseMessageBox = () => {
-       setOpenMessageBox(false);
-      };
+  const handleOpenMessageBox = (props) => {
+    setMessageBoxProps(props);
+    setOpenMessageBox(true);
+  };
+  const handleCloseMessageBox = () => {
+    setOpenMessageBox(false);
+  };
   const router = useRouter();
 
   const handleLoginSubmit = async () => {
@@ -32,14 +39,13 @@ export default function LoginForm({onSetLogin}) {
         });
     }
 
-    setIsLoading(true);
     try {
       const requestBody = {
         userId : id,
         password : password
       };
-      const result = await callInternalApi.post('/api/auth/login', requestBody);
-      if (result.data.success) {
+      const data = await post('/api/auth/login', requestBody);
+      if (data) {
         console.log('로그인 성공!');
         router.replace('/movie');
       } else {
@@ -47,9 +53,7 @@ export default function LoginForm({onSetLogin}) {
       }
     } catch (error) {
       console.error('클라이언트 측 에러:', error);
-    } finally {
-      setIsLoading(false);
-    }
+    } 
   };
 
   
@@ -59,21 +63,6 @@ export default function LoginForm({onSetLogin}) {
     else if (name === 'password') setPassword(value);
   };
   
-  useEffect(() => {
-    if (isLoading) {
-      return () => {
-        <div style={{ padding: '50px', fontSize: '20px', textAlign: 'center' }}>
-          <div style={{ border: '4px solid #f3f3f3', borderTop: '4px solid #3498db', borderRadius: '50%', width: '30px', height: '30px', animation: 'spin 1s linear infinite', margin: '10px auto' }}></div>
-          <style jsx>{`
-            @keyframes spin {
-              0% { transform: rotate(0deg); }
-              100% { transform: rotate(360deg); }
-              }
-              `}</style>
-        </div>
-          };
-        }
-      }, [isLoading]);
       
   return (
     <>

@@ -1,5 +1,5 @@
 import MyPageForm from "./mypageForm";
-import ProfilePic from "./profilePic";
+import ProfilePic from "../components/common/ProfilePic";
 import { CustomBox } from "@/styles/CommonStyles";
 import {rgbToHex, Stack} from "@mui/material"
 import callInternalApi from "@/lib/callInternalApi";

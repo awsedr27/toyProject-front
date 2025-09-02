@@ -1,11 +1,16 @@
 'use client'
-import Image from "next/image"
-import { TextFields } from "@mui/icons-material";
+import { useEffect } from "react";
 import {Link, Stack} from "@mui/material";
 import Trans from "../components/common/Trans";
+import { useLoading } from "@/context/LoadingContext";
 
 export default function MyPageForm() {
     const user = {};
+    const { setIsReady } = useLoading(); 
+    
+    useEffect(() => {
+        setIsReady(true);
+      }, [])
 
     const hanhandleBtnClick = function (id){
         switch(id){

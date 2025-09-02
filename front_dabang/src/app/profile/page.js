@@ -11,7 +11,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const data = await post('/api/user/profile')
+        const data = await post('/api/user/info')
         if (data) setProfile(data.data)
       } catch (err) {
         console.error('프로필 불러오기 실패', err)
