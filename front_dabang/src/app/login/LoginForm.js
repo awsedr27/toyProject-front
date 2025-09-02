@@ -8,22 +8,27 @@ import MessageBox from '../components/common/MessageBox';
 import { useRouter } from 'next/navigation';
 import ProgressBar from '../components/common/ProgressBar';
 import { useApi } from '@/hooks/useApi'
+import { useLoading } from '@/context/LoadingContext';
 
 export default function LoginForm({onSetLogin}) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  // const [isLoading, setIsLoading] = useState(false); // 로딩 상태 표시용
   const [openMessageBox, setOpenMessageBox] = useState(false);
   const [messageBoxProps, setMessageBoxProps] = useState({});
-  const {post, loading} = useApi();
+  const {post} = useApi();
+  const { setIsReady } = useLoading(); 
+
+  useEffect(() => {
+    setIsReady(true);
+  }, [])
       
-      const handleOpenMessageBox = (props) => {
-        setMessageBoxProps(props);
-        setOpenMessageBox(true);
-      };
-      const handleCloseMessageBox = () => {
-       setOpenMessageBox(false);
-      };
+  const handleOpenMessageBox = (props) => {
+    setMessageBoxProps(props);
+    setOpenMessageBox(true);
+  };
+  const handleCloseMessageBox = () => {
+    setOpenMessageBox(false);
+  };
   const router = useRouter();
 
   const handleLoginSubmit = async () => {
@@ -61,7 +66,6 @@ export default function LoginForm({onSetLogin}) {
       
   return (
     <>
-    {loading && <ProgressBar />}
     <div className="login-container">
     <h1><Trans tkey={"LOGIN.TITLE.LOGIN"}/></h1>
     <div className="login-form">
