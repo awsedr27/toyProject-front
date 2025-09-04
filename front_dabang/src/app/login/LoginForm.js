@@ -6,7 +6,6 @@ import { TextField, FormControl } from '@mui/material';
 import Trans from '../components/common/Trans';
 import MessageBox from '../components/common/MessageBox';
 import { useRouter } from 'next/navigation';
-import ProgressBar from '../components/common/ProgressBar';
 import { useApi } from '@/hooks/useApi'
 import { useLoading } from '@/context/LoadingContext';
 

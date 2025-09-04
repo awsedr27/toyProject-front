@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, useState , useEffect} from 'react';
+import { createContext, useContext, useState , useEffect, useRef } from 'react'; // useRef 추가
 import ProgressBar from '@/app/components/common/ProgressBar';
 import { usePathname } from 'next/navigation';
 
@@ -9,26 +9,31 @@ export const LoadingProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const pathname = usePathname();
+  const lastPathname = useRef(pathname); 
 
- useEffect(() => {
-   setLoading(true); 
-  }, [pathname])
-  
+  useEffect(() => {
+    
+    if (pathname !== lastPathname.current) {
+      setLoading(true);
+      setIsReady(false);
+    }
+    
+    
+    lastPathname.current = pathname;
+  }, [pathname]);
+
   useEffect(() => {
     if (isReady) {
-      setTimeout(() => {
-        setLoading(false); 
-        setIsReady(false);
-      }, 500);
+      setLoading(false);
     }
-  }, [isReady])
+  }, [isReady]);
 
   const value = { loading, setLoading, setIsReady };
 
-
   return (
     <LoadingContext.Provider value={value}>
-        <ProgressBar>{ children }</ProgressBar>
+      <ProgressBar />
+      {children}
     </LoadingContext.Provider>
   );
 };

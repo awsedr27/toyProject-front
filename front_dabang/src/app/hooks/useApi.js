@@ -5,7 +5,7 @@ import api from '../../lib/api'  // axios 인스턴스
 import { useLoading } from '@/context/LoadingContext';
 
 export function useApi() {
-  const { setLoading } = useLoading();
+ const { setLoading } = useLoading(); 
   const router = useRouter();
   const resultData = null;
 
@@ -14,7 +14,6 @@ export function useApi() {
     async (url, config) => {
       try {
         setLoading(true);
-
         const res = await api.get(url, config)
         if (res.data?.routeUrl) {
           router.push(res.data.routeUrl)
