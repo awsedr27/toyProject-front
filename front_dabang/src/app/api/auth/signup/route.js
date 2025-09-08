@@ -41,9 +41,9 @@ export async function POST(req) {
 
     // 4. 사용자 DB 저장
     await query(
-        `INSERT INTO users (user_id, password, name, email, phone_number, used, created_at, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())`,
-        [userId, hashedPassword, name, email, phoneNumber, true]
+        `INSERT INTO users (user_id, password, user_name, email, mobile_no, used, created_at, updated_at, use_start_date, use_end_date)
+       VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW(), NOW(), NOW() + INTERVAL '1 year')`,
+        [userId, hashedPassword, name, email, phoneNumber, 'Y']
     );
 
     // 5. 성공 응답
