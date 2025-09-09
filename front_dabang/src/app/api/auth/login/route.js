@@ -26,23 +26,11 @@ export async function POST(req) {
     const refreshToken = signRefreshToken({ userId: user.user_id });
 
     // 4. refresh_token 저장 또는 갱신
-    const existingRefresh = await query(
-      'SELECT * FROM refresh_tokens WHERE user_id = $1',
-      [user.user_id]
+    await query(
+      'UPDATE users SET refresh_token = $1, updated_at = NOW() WHERE user_id = $2',
+      [refreshToken, user.user_id]
     );
 
-    if (existingRefresh.rows.length > 0) {
-      await query(
-        'UPDATE refresh_tokens SET refresh_token = $1, updated_at = NOW() WHERE user_id = $2',
-        [refreshToken, user.user_id]
-      );
-    } else {
-      await query(
-        `INSERT INTO refresh_tokens (user_id, refresh_token, created_at, updated_at)
-         VALUES ($1, $2, NOW(), NOW())`,
-        [user.user_id, refreshToken]
-      );
-    }
 
     // 5. httpOnly 쿠키 설정
     const cookieStore = await cookies();

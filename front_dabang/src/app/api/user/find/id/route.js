@@ -16,7 +16,7 @@ export async function POST(req) {
     }
 
     const result = await query(
-        `SELECT user_id FROM users WHERE name = $1 AND phone_number = $2`,
+        `SELECT user_id FROM users WHERE user_name = $1 AND mobile_no = $2`,
         [name, phoneNumber]
     )
 

@@ -4,7 +4,7 @@ import { withAuth } from '@/lib/withAuth'
 async function handler(req, userId, client) {
   try {
     const result = await client.query(
-      `SELECT user_id, email, name, phone_number, used, created_at, updated_at 
+      `SELECT user_id, email, user_name, mobile_no, used, created_at, updated_at 
        FROM users WHERE user_id = $1`,
       [userId]
     )
@@ -27,8 +27,8 @@ async function handler(req, userId, client) {
         data: {
           userId: user.user_id,
           email: user.email,
-          name: user.name,
-          phoneNumber: user.phone_number,
+          name: user.user_name,
+          phoneNumber: user.mobile_no,
           used: user.used,
           createdAt: user.created_at,
           updatedAt: user.updated_at,
