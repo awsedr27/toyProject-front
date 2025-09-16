@@ -4,8 +4,8 @@ import { withAuth } from '@/lib/withAuth'
 async function handler(req, userId, client) {
   try {
     const result = await client.query(
-      `SELECT user_id, email, name, phone_number, used, created_at, updated_at 
-       FROM users WHERE user_id = $1`,
+      `SELECT profile_id, user_id, profile_name, profile_pic, language, status, created_at, updated_at
+       FROM profile WHERE user_id = $1`,
       [userId]
     )
 
@@ -19,19 +19,20 @@ async function handler(req, userId, client) {
       )
     }
 
-    const user = result.rows[0]
+    const profile = result.rows[0]
 
     return new Response(
       JSON.stringify({
         ...resultCodes.SUCCESS,
         data: {
-          userId: user.user_id,
-          email: user.email,
-          name: user.name,
-          phoneNumber: user.phone_number,
-          used: user.used,
-          createdAt: user.created_at,
-          updatedAt: user.updated_at,
+          profileId: profile.profile_id,
+          userId: profile.user_id,
+          profileName: profile.profile_name,
+          profile_pic: profile.profile_pic,
+          language: profile.language,
+          status: profile.status,
+          createdAt: profile.created_at,
+          updatedAt: profile.updated_at,
         },
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
