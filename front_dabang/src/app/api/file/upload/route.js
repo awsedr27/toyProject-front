@@ -1,25 +1,30 @@
-import { query } from '@/lib/db';
-import resultCodes from '@/lib/resultCode';
-import { writeFile } from 'fs/promises';
+import { mkdir, writeFile } from 'fs/promises';
 import path from 'path';
+import { withAuth } from '@/lib/withAuth'
+import { getResultCode } from '@/lib/resultCode'
+// .env에서 불러온 업로드 디렉토리
+const uploadDir = process.env.UPLOAD_DIR;
 
 async function handler(req, userId, client) {
   try {
+    
     const formData = await req.formData();
     const file = formData.get('file');
     const metaData = formData.get('metaData');
 
     if (!file || !metaData) {
       return new Response(JSON.stringify({
-        ...resultCodes.BAD_REQUEST
+        ...getResultCode('BAD_REQUEST')
       }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' }
       });
     }
 
-    // 파일 저장 경로
-    const uploadDir = path.join(process.cwd(), 'uploads');
+    // 업로드 폴더 없으면 생성
+    await mkdir(uploadDir, { recursive: true });
+
+    // 파일명 및 경로
     const fileName = `${metaData}_${Date.now()}_${file.name}`;
     const filePath = path.join(uploadDir, fileName);
 
@@ -27,14 +32,8 @@ async function handler(req, userId, client) {
     const buffer = Buffer.from(await file.arrayBuffer());
     await writeFile(filePath, buffer);
 
-    // DB에 경로 업데이트
-    // await query(
-    //   `UPDATE users SET profile_image = $1, updated_at = NOW() WHERE user_id = $2`,
-    //   [fileName, userId]
-    // );
-
     return new Response(JSON.stringify({
-      ...resultCodes.SUCCESS
+      ...getResultCode('SUCCESS')
     }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
@@ -42,12 +41,12 @@ async function handler(req, userId, client) {
   } catch (err) {
     console.error('[POST /api/user/profile/upload]', err);
     return new Response(JSON.stringify({
-      ...resultCodes.UNKNOWN
+      ...getResultCode('UNKNOWN')
     }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
     });
   }
 }
 
-export const POST = withAuth(handler)
+export const POST = withAuth(handler);
