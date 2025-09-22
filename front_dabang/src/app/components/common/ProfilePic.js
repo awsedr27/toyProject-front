@@ -5,8 +5,8 @@ import Avatar from '@mui/material/Avatar';
 import { Badge, Stack } from '@mui/material';
 import ButtonBase from '@mui/material/ButtonBase';
 
-export default function ProfilePic({ picSize, uploadBtn }) {
-  const [avatarSrc, setAvatarSrc] = React.useState(undefined);
+export default function ProfilePic({ picSize, uploadBtn , picURL}) {
+  const [avatarSrc, setAvatarSrc] = React.useState(picURL);
 
   const handleAvatarChange = (event) => {
     const file = event.target.files?.[0];
@@ -18,7 +18,13 @@ export default function ProfilePic({ picSize, uploadBtn }) {
       reader.readAsDataURL(file);
     }
   };
-
+  /*
+    prefixedSize 
+      1 : 150
+      2 : 75
+      3 : 38 (헤더 아이콘)
+      기본값 : 150
+  */
   const ResizedAvatar = styled(Avatar)(({ theme, s }) => ({
     width: s === 1 ? 150 : s === 2 ? 75 : s === 3 ? 38 : 150,
     height: s === 1 ? 150 : s === 2 ? 75 : s === 3 ? 38 : 150,

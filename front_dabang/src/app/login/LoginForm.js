@@ -7,7 +7,7 @@ import Trans from '../components/common/Trans';
 import MessageBox from '../components/common/MessageBox';
 import { useRouter } from 'next/navigation';
 import { useApi } from '@/hooks/useApi'
-import { useLoading } from '@/context/LoadingContext';
+import { useLoading } from '@/app/LoadingContext';
 
 export default function LoginForm({onSetLogin}) {
   const [id, setId] = useState('');
