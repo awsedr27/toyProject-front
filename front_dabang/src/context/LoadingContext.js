@@ -7,28 +7,30 @@ const LoadingContext = createContext();
 
 export const LoadingProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
-  const [isReady, setIsReady] = useState(false);
+ // const [isReady, setIsReady] = useState(false);
   const pathname = usePathname();
-  const lastPathname = useRef(pathname); 
+ // const lastPathname = useRef(pathname); 
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    if (pathname !== lastPathname.current) {
-      setLoading(true);
-      setIsReady(false);
-    }
+  //   if (pathname !== lastPathname.current) {
+  //     setLoading(true);
+  //     setIsReady(false);
+  //   }
     
     
-    lastPathname.current = pathname;
-  }, [pathname]);
+  //   lastPathname.current = pathname;
+  // }, [pathname]);
 
-  useEffect(() => {
-    if (isReady) {
-      setLoading(false);
-    }
-  }, [isReady]);
+  // useEffect(() => {
+  //   if (isReady) {
+  //     setLoading(false);
+  //   }
+  // }, [isReady]);
 
-  const value = { loading, setLoading, setIsReady };
+  const value = { loading, setLoading
+    //,setIsReady 
+  };
 
   return (
     <LoadingContext.Provider value={value}>

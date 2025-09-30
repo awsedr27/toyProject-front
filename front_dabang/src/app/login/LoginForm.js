@@ -7,7 +7,7 @@ import Trans from '../components/common/Trans';
 import MessageBox from '../components/common/MessageBox';
 import { useRouter } from 'next/navigation';
 import { useApi } from '@/hooks/useApi'
-import { useLoading } from '@/app/LoadingContext';
+import { useLoading } from '@/context/LoadingContext';
 
 export default function LoginForm({onSetLogin}) {
   const [id, setId] = useState('');
@@ -15,11 +15,9 @@ export default function LoginForm({onSetLogin}) {
   const [openMessageBox, setOpenMessageBox] = useState(false);
   const [messageBoxProps, setMessageBoxProps] = useState({});
   const {post} = useApi();
-  const { setIsReady } = useLoading(); 
+  const { loading, setLoading } = useLoading(); 
 
-  useEffect(() => {
-    setIsReady(true);
-  }, [])
+
       
   const handleOpenMessageBox = (props) => {
     setMessageBoxProps(props);
