@@ -8,9 +8,9 @@ export function useApi() {
  const { loading, setLoading } = useLoading();
   // GET 요청 함수
   const get = useCallback(
-    async (url, config = {}) => {
+    async (url, config = {},useLoadingBar) => {
       try {
-        setLoading(true);
+        if(useLoadingBar) setLoading(true);
         const res = await callInternalApi.get(url, config)
         if (res.data?.routeUrl) {
           router.push(res.data.routeUrl)
@@ -20,7 +20,9 @@ export function useApi() {
       } catch (error) {
         throw error
       }finally{
-        setLoading(false);
+        if(useLoadingBar){
+          setLoading(false);
+        }
       }
     },
     [router]
@@ -28,12 +30,10 @@ export function useApi() {
 
   // POST 요청 함수
   const post = useCallback(
-    async (url, data, config = {}) => {
+    async (url, data, config = {},useLoadingBar) => {
       try {
-        //setLoading(true);
-        console.log('api진입')
+        if(useLoadingBar) setLoading(true);
         const res = await callInternalApi.post(url, data, config)
-        console.log('api이후')
         if (res.data?.routeUrl) {
           router.push(res.data.routeUrl)
           return null
@@ -42,8 +42,9 @@ export function useApi() {
       } catch (error) {
         throw error
       }finally{
-        console.log('finally실행')
-       // setLoading(false);
+        if(useLoadingBar){
+          setLoading(false);
+        }
       }
     },
     [router]

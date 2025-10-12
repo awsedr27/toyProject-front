@@ -2,15 +2,15 @@
 import { useEffect, useState } from "react";
 import {Link, Stack} from "@mui/material";
 import Trans from "../components/common/Trans";
-import { useLoading } from "@/app/LoadingContext";
+//import { useLoading } from "@/app/LoadingContext";
 
 export default function MyPageForm({ profile }) {
-    const {setIsReady } = useLoading(); 
+   // const {setIsReady } = useLoading(); 
 
     
-    useEffect(() => {
-        setIsReady(true); 
-     }, [profile])
+    // useEffect(() => {
+    //     setIsReady(true); 
+    //  }, [profile])
 
     return(
         <>

@@ -3,18 +3,17 @@ import React, { useState, useEffect } from 'react';
 import { useApi } from '@/hooks/useApi'
 import { Box, Typography, TextField, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import {useLoading} from '@/context/LoadingContext'
 export default function MovieListPage() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const { post } = useApi();
   const [searchQuery, setSearchQuery] = useState('');
- const { loading, setLoading } = useLoading();
+
 
   const fetchMovies = async (query = '') => {
       setError(null);
       try {
-        setLoading(true);
+
         const request = { query: query };
         const response = await post('/api/movies', request);
         const movieList = response?.Data?.[0]?.Result || [];
@@ -24,7 +23,6 @@ export default function MovieListPage() {
         console.error("데이터 로딩 중 오류 발생:", err);
         setError(err.message);
       } finally {
-        setLoading(false);
       }
   };
   

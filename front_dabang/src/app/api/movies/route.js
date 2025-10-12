@@ -9,7 +9,6 @@ export async function POST(req) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get("query");
   const listCount = searchParams.get("listCount") || 20;
-
   const kmdbApi = callExternalApi({
     baseURL: KMDB_API_BASE_URL,
   });
