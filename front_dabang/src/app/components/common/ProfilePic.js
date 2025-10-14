@@ -13,7 +13,13 @@ export default function ProfilePic({ picSize, uploadBtn , picURL}) {
     const file = event.target.files?.[0];
     if (file) {
       const fileId = await fileUpload(file);
-
+      //로컬스토리지 데이터 추가 필요
+      //const profile = JSON.parse(localStorage.getItem(myPrfile));
+      const requestBody = {
+        profileId : '00002',
+        profilePic : fileId
+      };
+      const data = await post('/api/profile/update', requestBody,{},true);
       const reader = new FileReader();
       reader.onload = () => {
         setAvatarSrc(reader.result);

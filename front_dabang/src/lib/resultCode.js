@@ -77,6 +77,13 @@ const resultCodes = {
     title: 'DB 처리 오류',
     level: 'error',
   },
+  //프로필
+  PROFILE_NOT_FOUND: {
+    code: 'PRO-0001',
+    status: 409,
+    title: '프로필이 없습니다',
+    level: 'warn',
+  },
 };
 
 /**

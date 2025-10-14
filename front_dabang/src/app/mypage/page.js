@@ -25,14 +25,14 @@ export default async function MyPage() {
             throw new Error('프로필을 불러오는 데 실패했습니다.');
      }
     } 
-    const myProfile = await fetchUserProfile('abcd');
+    const myProfile = await fetchUserProfile('kjo0527');
     console.log(myProfile);
 
     return(
         <>
         <CustomBox className='myPageBox' sx={{ mt: 10 }}> 
             <Stack sx={{paddingtop:'30px'}}>
-                <ProfilePic picURL={myProfile.profile_pic} picSize="1" uploadBtn={true}></ProfilePic>
+                <ProfilePic picURL={process.env.NEXT_PUBLIC_RESOURCE_API_BASE_URL+myProfile.profile_pic} picSize="1" uploadBtn={true}></ProfilePic>
             </Stack>
             <Stack >
                 <MyPageForm profile={myProfile}></MyPageForm>

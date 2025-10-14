@@ -28,9 +28,11 @@ async function handler(req, userId, client) {
     // 파일명 및 경로
     const fileId = randomUUID();
     const originalName = file.name;
+    const ext = path.extname(originalName); 
     const mimeType = file.type;
     const size = file.size;
-    const filePath = path.join(uploadDir, fileId);
+    const fileName = `${fileId}${ext}`;
+    const filePath = path.join(uploadDir, fileName);
 
     // 파일 저장
     const buffer = Buffer.from(await file.arrayBuffer());
