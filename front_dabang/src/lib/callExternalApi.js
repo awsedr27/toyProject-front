@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const externalApi = (config = {}) => {
+const callExternalApi = (config = {}) => {
   const instance = axios.create({
     timeout: 5000,
     ...config,
@@ -38,4 +38,4 @@ const externalApi = (config = {}) => {
   return instance;
 };
 
-export default externalApi;
+export default callExternalApi;

@@ -1,0 +1,36 @@
+.myPageBox {
+    width: 450px;
+    height: 500px;
+    background-color: var(--background-color-light) !important;
+}
+
+.myPageProfileName{
+    font-size:22px;
+}
+
+.myPageBtnList {
+  width: 280px;
+  height: 40px;
+  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 10px; 
+  margin: 4px 0 !important;
+  border: 1px solid var(--primary-color); 
+  border-radius: 4px; 
+
+/* 글자 스타일 */
+  font-size: 18px;
+  text-decoration: none !important; 
+  color : var(--font-color) !important;
+
+  /* 기타 */
+  cursor: pointer; 
+  background-color: var(--background-color-light);
+}
+
+.MyPageBtnList:hover {
+  background-color: var(--background-color-dark) !important; /* 호버 시 배경색 변경 */
+}
+

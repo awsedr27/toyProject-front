@@ -1,12 +1,14 @@
-import { query } from '@/lib/db'
-import resultCodes from '@/lib/resultCode'
+import { query } from '@/lib/db';
+import bcrypt from 'bcrypt';
+import resultCodes from '@/lib/resultCode';
+
 
 export async function POST(req) {
   try {
     const body = await req.json()
-    const { name, phoneNumber } = body
+    const { userId, password } = body;
 
-    if (!name || !phoneNumber) {
+    if (!userId || !password) {
       return new Response(JSON.stringify({
         ...resultCodes.BAD_REQUEST
       }), {
@@ -15,21 +17,15 @@ export async function POST(req) {
       })
     }
 
-    const result = await query(
-        `SELECT user_id FROM users WHERE user_name = $1 AND mobile_no = $2`,
-        [name, phoneNumber]
-    )
+    // 1. 사용자 조회
+    const result = await query('SELECT * FROM users WHERE user_id = $1', [userId]);
+    const user = result.rows[0];
 
-    if (result.rows.length === 0) {
-      return new Response(JSON.stringify({
-        ...resultCodes.USER_NOT_FOUND
-      }), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' }
-      })
+    // 2. 비밀번호 검증
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) {
+      return Response.json({ error: '비밀번호가 일치하지 않습니다.' }, { status: 401 });
     }
-
-    const user = result.rows[0]
 
     return new Response(JSON.stringify({
       ...resultCodes.SUCCESS,
@@ -41,7 +37,7 @@ export async function POST(req) {
       headers: { 'Content-Type': 'application/json' }
     })
   } catch (err) {
-    console.error('[POST /api/user/find/id]', err)
+    console.error('[POST /api/user/valid/password]', err)
     return new Response(JSON.stringify({
       ...resultCodes.UNKNOWN
     }), {

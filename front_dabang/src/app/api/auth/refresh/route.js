@@ -5,7 +5,7 @@ import { getResultCode } from '@/lib/resultCode'
 
 export async function POST(req) {
   try {
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     const refreshToken = cookieStore.get('refreshToken')?.value
 
     if (!refreshToken) {
@@ -30,7 +30,7 @@ export async function POST(req) {
 
     // 2. DB에서 저장된 리프레시 토큰 조회
     const storedTokenRes = await query(
-      'SELECT * FROM refresh_tokens WHERE user_id = $1',
+      'SELECT * FROM users WHERE user_id = $1',
       [userId]
     )
 
@@ -57,7 +57,7 @@ export async function POST(req) {
     const newRefreshToken = signRefreshToken({ userId })
 
     await query(
-      'UPDATE refresh_tokens SET refresh_token = $1, updated_at = NOW() WHERE user_id = $2',
+      'UPDATE users SET refresh_token = $1, updated_at = NOW() WHERE user_id = $2',
       [newRefreshToken, userId]
     )
 

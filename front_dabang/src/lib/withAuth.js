@@ -1,5 +1,6 @@
 import { getResultCode } from '@/lib/resultCode'
 import { verifyToken } from '@/lib/jwt'
+import {withTransaction} from "@/lib/db";
 
 function clearAuthCookies() {
   return [
@@ -68,6 +69,8 @@ export function withAuth(handler) {
     }
 
     // 5. 인증 성공: 실제 핸들러에 userId 전달해서 실행
-    return handler(req, accessPayload.userId)
+    return await withTransaction(async (client) => {
+      return await handler(req, accessPayload.userId, client)
+    })
   }
 }
