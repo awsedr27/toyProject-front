@@ -72,6 +72,17 @@ export default function MyThemeProvider({ children }) {
               },
             },
           },
+          MuiFormLabel: {
+            styleOverrides: {
+              root: {
+                textAlign: 'left', 
+                display: 'flex', 
+                alignItems: 'center', 
+                marginTop: '8px',
+                marginBottom: '1px', // 예시: 라벨과 인풋 필드 사이 간격
+              },
+            },
+          },
       },
     });
 
