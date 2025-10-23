@@ -4,6 +4,7 @@
       "COMM.BTN.OK" : "OK" ,
       "COMM.BTN.CANCEL" : "Cancel", 
       "COMM.BTN.CLOSE" : "Close",
+      "COMM.BTN.SAVE" : "Save",
       "COMM.ALERT.SERVER_ERROR" : "Server error has occurred.",
       "COMM.USER.TITLE" : "",
       "BTN.CANCEL" :"Cancel",
@@ -41,7 +42,8 @@
       "USR-0003": "Database error occurred.",
       "MYPAGE.BTN.EDIT_PERSONAL_INFO": "Edit Personal Information",
       "MYPAGE.BTN.MY_ACTIVITIES": "My Activities",
-      "MYPAGE.BTN.SETTINGS": "Settings"
+      "MYPAGE.BTN.SETTINGS": "Settings",
+      "EDIT_PERSON_INFO.TITLE.EDIT_PERSON_INFO" : "Edit Personal Information"
 
     }
   },
@@ -50,6 +52,7 @@
       "COMM.BTN.OK" : "확인", 
       "COMM.BTN.CANCEL" : "취소" ,
       "COMM.BTN.CLOSE" : "닫기",
+      "COMM.BTN.SAVE" : "저장",
       "COMM.ALERT.SERVER_ERROR" : "서버 에러가 발생했습니다.",
       "COMM.USER.TITLE" : " 님",
       "BTN.LOG_IN" :"로그인",
@@ -86,7 +89,8 @@
       "USR-0003": "DB 처리 오류가 발생했습니다.",
       "MYPAGE.BTN.EDIT_PERSONAL_INFO": "개인 정보 수정",
       "MYPAGE.BTN.MY_ACTIVITIES": "내 활동",
-      "MYPAGE.BTN.SETTINGS": "설정"
+      "MYPAGE.BTN.SETTINGS": "설정",
+      "EDIT_PERSON_INFO.TITLE.EDIT_PERSON_INFO" : "개인 정보 수정"
     }
   }
 }
