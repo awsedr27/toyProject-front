@@ -29,7 +29,7 @@ function MovieSlider({ genre, movies }) {
     if (!isDown.current) return;
     e.preventDefault();
     const x = e.pageX - sliderRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1; // 드래그 속도
+    const walk = (x - startX.current) * 1;
     sliderRef.current.scrollLeft = scrollLeft.current - walk;
   };
 
