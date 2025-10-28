@@ -2,6 +2,7 @@ import { query } from '@/lib/db';
 import bcrypt from 'bcrypt';
 import { signAccessToken, signRefreshToken } from '@/lib/jwt';
 import { cookies } from 'next/headers';
+import { createSession } from '@/lib/session';
 
 export async function POST(req) {
   try {
@@ -32,7 +33,7 @@ export async function POST(req) {
     );
 
 
-    // 5. httpOnly 쿠키 설정
+    // 5-1. httpOnly 쿠키 설정
     const cookieStore = await cookies();
 
     cookieStore.set('accessToken', accessToken, {
@@ -46,6 +47,14 @@ export async function POST(req) {
       path: '/',
       maxAge: 60 * 60 * 24 * 7, // 7일
     });
+
+    // 5-2. 프로파일 쿠키 설정
+    const result2 = await query('SELECT * FROM profiles WHERE user_id = $1', [userId]);
+    const profile = result2.rows[0];
+    profile.userId = userId;
+
+    await createSession(profile);
+
 
     // 6. 응답
     return Response.json({ success: true });

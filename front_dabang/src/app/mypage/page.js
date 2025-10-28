@@ -8,10 +8,12 @@ import './myPage.css';
 
 
 export default async function MyPage() {
-    async function fetchUserProfile(userId) {
+    async function fetchUserProfile() {
         const cookieStore = await cookies();
-        const token = cookieStore.get('accessToken');
-        console.log(token);
+        const preference = JSON.parse(cookieStore.get('userPrefs').value);
+        const userId = preference.userId;
+        console.log(preference);
+        
         
         try{
             const result = await query(`SELECT profile_id, user_id, profile_name, profile_pic, language, status, created_at, updated_at
@@ -25,7 +27,9 @@ export default async function MyPage() {
             throw new Error('프로필을 불러오는 데 실패했습니다.');
      }
     } 
-    const myProfile = await fetchUserProfile('kjo0527');
+
+    
+    const myProfile = await fetchUserProfile();
     console.log(myProfile);
 
     return(
