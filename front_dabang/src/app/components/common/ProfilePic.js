@@ -5,6 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import { Badge, Stack } from '@mui/material';
 import ButtonBase from '@mui/material/ButtonBase';
 import { useApi } from '@/hooks/useApi';
+import {fileUpload} from '@/lib/fileUpload'
 export default function ProfilePic({ picSize, uploadBtn , picURL}) {
   const [avatarSrc, setAvatarSrc] = React.useState(picURL);
   const { post } = useApi();
@@ -27,24 +28,7 @@ export default function ProfilePic({ picSize, uploadBtn , picURL}) {
       reader.readAsDataURL(file);
     }
   };
-  const fileUpload = async (file) => {
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
 
-      // 업로드 시에는 'Content-Type' 헤더 자동으로 multipart/form-data로 설정돼야 하므로 빈 config 전달
-      const res = await post('/api/file/upload', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      }, true); // true: 로딩 바 켜기
-
-      console.log('업로드 결과:', res.data.fileId);
-      return res.data.fileId;
-      // 여기서 fileId나 url 받아서 프로필 수정 API 호출 가능
-
-    } catch (error) {
-      console.error('파일 업로드 실패:', error);
-    }
-  };
   /*
     prefixedSize 
       1 : 150
