@@ -11,6 +11,22 @@
   --font-color:#333;
 }
 
+[data-theme="dark"] {
+  --primary-color: #9f4fff;
+  --primary-light-color: #b366ff;
+  --primary-dark-color: #7a33cc;
+  --secondary-color: #ffff4d;
+  --secondary-light-color: #ffff80;
+  --secondary-dark-color: #e6e600;
+  --background-color-light: #1a1a1a;
+  --background-color-dark: #2d2d2d;
+  --font-color: #ffffff;
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 Trans {
   color: var(--font-color);
 }
@@ -44,11 +60,14 @@ Trans {
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: var(--background-color-light);
+  color: var(--font-color);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {

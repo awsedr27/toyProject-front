@@ -5,7 +5,8 @@ import { styled } from '@mui/material/styles';
 export const CustomBox = styled(Box)(({ theme }) => ({
   padding: '20px',
   margin: '20px',
-  backgroundColor: 'white',
+  backgroundColor: theme.palette.background.paper,
+  color: theme.palette.text.primary,
   textAlign: 'center',
   borderRadius: '20px',
   border: '1px solid',
