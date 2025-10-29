@@ -13,7 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
     const searchMovies = async (query) => {
      setError(null);
      try {
-         const request = { Key };
+         const request = { query:Key };
          const response = await post('/api/movies/searchDetail', request,true);
 
          const movieList = response?.results
