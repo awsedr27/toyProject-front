@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme, alpha, getContrastRatio } from '@mui/material/styles';
+import { useTheme } from '../src/context/ThemeContext';
 
 export default function MyThemeProvider({ children }) {
   const [theme, setTheme] = useState(null);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -21,6 +23,7 @@ export default function MyThemeProvider({ children }) {
 
     const myTheme = createTheme({
       palette: {
+        mode: isDarkMode ? 'dark' : 'light',
         primary: {
           main: violetMain,
           light: primaryLightColor,
@@ -32,6 +35,14 @@ export default function MyThemeProvider({ children }) {
           light: secondaryLightColor,
           dark: secondaryDarkColor,
           contrastText: getContrastRatio(alpha(yellowBase, 0.8), '#fff') > 4.5 ? '#fff' : '#111',
+        },
+        background: {
+          default: isDarkMode ? '#1a1a1a' : '#ffffff',
+          paper: isDarkMode ? '#2d2d2d' : '#ffffff',
+        },
+        text: {
+          primary: isDarkMode ? '#ffffff' : '#000000',
+          secondary: isDarkMode ? '#b3b3b3' : '#666666',
         }
       },
       components: {
@@ -64,7 +75,7 @@ export default function MyThemeProvider({ children }) {
               root: {
                 padding: '20px',
                 margin: '20px',
-                backgroundColor: 'white',
+                backgroundColor: isDarkMode ? '#2d2d2d' : 'white',
                 textAlign: 'center',
                 borderRadius: '20px',
                 border: '1px solid',
@@ -87,7 +98,7 @@ export default function MyThemeProvider({ children }) {
     });
 
     setTheme(myTheme);
-  }, []); 
+  }, [isDarkMode]); 
   if (!theme) {
     return null; 
   }

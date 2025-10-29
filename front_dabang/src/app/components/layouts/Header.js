@@ -4,12 +4,14 @@ import styles from './Header.module.css';
 import BtnMultlLang from '../buttons/BtnMultiLang';
 import Image from 'next/image';
 import { Box, IconButton, useTheme } from '@mui/material'
+import DarkModeToggle from '@/app/components/buttons/DarkModeToggle';
 
 
 export default function Header() {
 const theme = useTheme();
   return (
     <>
+    <DarkModeToggle />
       <Box className={styles.upperHeaderContainer}>
         <BtnMultlLang></BtnMultlLang>
         <Link href="/mypage">
@@ -19,12 +21,6 @@ const theme = useTheme();
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.logo}>nunecine</div>
-          <nav className={styles.nav}>
-            <Link href="/main" className={styles.link}>Main</Link>
-            <Link href="/about" className={styles.link}>About</Link>
-            <Link href="/services" className={styles.link}>Services</Link>
-            <Link href="/contact" className={styles.link}>Contact</Link>
-          </nav>
         </div>
       </header>
     </>
